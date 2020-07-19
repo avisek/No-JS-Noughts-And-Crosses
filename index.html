@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <title>Noughts and Crosses</title>
+    <meta name="description" content="A game of Noughts and Crosses or Tic Tac Toe using HTML and CSS only, no JavaScript. It's all done with the `checkbox hack` or, in this case, radio buttons' checked property.">
+    <meta name="author" content="Avisek Das">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="index.css">
+
+  </head>
+
+  <body>
+
+    <svg display="none">
+      <defs>
+        <g id="shape-guide-horizontal">
+          <path d="M102,0L0,0"></path>
+          <path d="M102,0L204,0"></path>
+        </g>
+        <use id="shape-guide-vertical" transform="rotate(90)" href="#shape-guide-horizontal" />
+        <g id="shape-nought">
+          <path d="M24,6A18,18 0 1,0 24,42A18,18 0 1,0 24,6"></path>
+        </g>
+        <g id="shape-cross">
+          <path d="M6,6L42,42"></path>
+          <path d="M42,6L6,42"></path>
+        </g>
+        <g id="shape-strikethrough-horizontal">
+          <path d="M0,0L204,0"></path>
+        </g>
+        <use id="shape-strikethrough-vertical" transform="rotate(90)" href="#shape-strikethrough-horizontal" />
+        <g id="shape-strikethrough-diagonal">
+          <path d="M0,0L204,204"></path>
+        </g>
+      </defs>
+    </svg>
+
+    <main>
+
+      <form>
+
+        <h1>Noughts & Crosses</h1>
+
+        <!-- radios hold statuses -->
+        <!-- noughts -->
+        <input type="radio" id="sq1-o" name="sq1" class="nought">
+        <input type="radio" id="sq2-o" name="sq2" class="nought">
+        <input type="radio" id="sq3-o" name="sq3" class="nought">
+        <input type="radio" id="sq4-o" name="sq4" class="nought">
+        <input type="radio" id="sq5-o" name="sq5" class="nought">
+        <input type="radio" id="sq6-o" name="sq6" class="nought">
+        <input type="radio" id="sq7-o" name="sq7" class="nought">
+        <input type="radio" id="sq8-o" name="sq8" class="nought">
+        <input type="radio" id="sq9-o" name="sq9" class="nought">
+        <!-- crosses -->
+        <input type="radio" id="sq1-x" name="sq1" class="cross">
+        <input type="radio" id="sq2-x" name="sq2" class="cross">
+        <input type="radio" id="sq3-x" name="sq3" class="cross">
+        <input type="radio" id="sq4-x" name="sq4" class="cross">
+        <input type="radio" id="sq5-x" name="sq5" class="cross">
+        <input type="radio" id="sq6-x" name="sq6" class="cross">
+        <input type="radio" id="sq7-x" name="sq7" class="cross">
+        <input type="radio" id="sq8-x" name="sq8" class="cross">
+        <input type="radio" id="sq9-x" name="sq9" class="cross">
+
+        <div class="stage">
+
+          <!-- the board for display -->
+          <div class="board">
+
+            <svg class="svg-board" viewBox="0 0 204 204">
+              <use class="shape shape-guide shape-guide-y1" href="#shape-guide-horizontal" transform="translate(0 67)" />
+              <use class="shape shape-guide shape-guide-y2" href="#shape-guide-horizontal" transform="translate(0 137)" />
+              <use class="shape shape-guide shape-guide-x1" href="#shape-guide-vertical" transform="translate(67 0)" />
+              <use class="shape shape-guide shape-guide-x2" href="#shape-guide-vertical" transform="translate(137 0)" />
+            </svg>
+
+            <div id="sq1" class="square">
+              <svg class="svg-square" viewBox="-8 -8 64 64" overflow="visible">
+                <use class="shape shape-nought" href="#shape-nought" />
+                <use class="shape shape-cross" href="#shape-cross" />
+              </svg>
+              <label class="label label-nought" for="sq1-o"></label>
+              <label class="label label-cross" for="sq1-x"></label>
+            </div>
+
+            <div id="sq2" class="square">
+              <svg class="svg-square" viewBox="-8 -8 64 64" overflow="visible">
+                <use class="shape shape-nought" href="#shape-nought" />
+                <use class="shape shape-cross" href="#shape-cross" />
+              </svg>
+              <label class="label label-nought" for="sq2-o"></label>
+              <label class="label label-cross" for="sq2-x"></label>
+            </div>
+
+            <div id="sq3" class="square">
+              <svg class="svg-square" viewBox="-8 -8 64 64" overflow="visible">
+                <use class="shape shape-nought" href="#shape-nought" />
+                <use class="shape shape-cross" href="#shape-cross" />
+              </svg>
+              <label class="label label-nought" for="sq3-o"></label>
+              <label class="label label-cross" for="sq3-x"></label>
+            </div>
+
+            <div id="sq4" class="square">
+              <svg class="svg-square" viewBox="-8 -8 64 64" overflow="visible">
+                <use class="shape shape-nought" href="#shape-nought" />
+                <use class="shape shape-cross" href="#shape-cross" />
+              </svg>
+              <label class="label label-nought" for="sq4-o"></label>
+              <label class="label label-cross" for="sq4-x"></label>
+            </div>
+
+            <div id="sq5" class="square">
+              <svg class="svg-square" viewBox="-8 -8 64 64" overflow="visible">
+                <use class="shape shape-nought" href="#shape-nought" />
+                <use class="shape shape-cross" href="#shape-cross" />
+              </svg>
+              <label class="label label-nought" for="sq5-o"></label>
+              <label class="label label-cross" for="sq5-x"></label>
+            </div>
+
+            <div id="sq6" class="square">
+              <svg class="svg-square" viewBox="-8 -8 64 64" overflow="visible">
+                <use class="shape shape-nought" href="#shape-nought" />
+                <use class="shape shape-cross" href="#shape-cross" />
+              </svg>
+              <label class="label label-nought" for="sq6-o"></label>
+              <label class="label label-cross" for="sq6-x"></label>
+            </div>
+
+            <div id="sq7" class="square">
+              <svg class="svg-square" viewBox="-8 -8 64 64" overflow="visible">
+                <use class="shape shape-nought" href="#shape-nought" />
+                <use class="shape shape-cross" href="#shape-cross" />
+              </svg>
+              <label class="label label-nought" for="sq7-o"></label>
+              <label class="label label-cross" for="sq7-x"></label>
+            </div>
+
+            <div id="sq8" class="square">
+              <svg class="svg-square" viewBox="-8 -8 64 64" overflow="visible">
+                <use class="shape shape-nought" href="#shape-nought" />
+                <use class="shape shape-cross" href="#shape-cross" />
+              </svg>
+              <label class="label label-nought" for="sq8-o"></label>
+              <label class="label label-cross" for="sq8-x"></label>
+            </div>
+
+            <div id="sq9" class="square">
+              <svg class="svg-square" viewBox="-8 -8 64 64" overflow="visible">
+                <use class="shape shape-nought" href="#shape-nought" />
+                <use class="shape shape-cross" href="#shape-cross" />
+              </svg>
+              <label class="label label-nought" for="sq9-o"></label>
+              <label class="label label-cross" for="sq9-x"></label>
+            </div>
+
+            <svg class="svg-strikethroughning" viewBox="0 0 204 204" overflow="visible">
+              <use class="shape shape-strikethrough shape-strikethrough-123" href="#shape-strikethrough-horizontal" transform="translate(0 32)" />
+              <use class="shape shape-strikethrough shape-strikethrough-456" href="#shape-strikethrough-horizontal" transform="translate(0 102)" />
+              <use class="shape shape-strikethrough shape-strikethrough-789" href="#shape-strikethrough-horizontal" transform="translate(0 172)" />
+              <use class="shape shape-strikethrough shape-strikethrough-147" href="#shape-strikethrough-vertical" transform="translate(32 0)" />
+              <use class="shape shape-strikethrough shape-strikethrough-258" href="#shape-strikethrough-vertical" transform="translate(102 0)" />
+              <use class="shape shape-strikethrough shape-strikethrough-369" href="#shape-strikethrough-vertical" transform="translate(172 0)" />
+              <use class="shape shape-strikethrough shape-strikethrough-159" href="#shape-strikethrough-diagonal" />
+              <use class="shape shape-strikethrough shape-strikethrough-357" href="#shape-strikethrough-diagonal" transform="rotate(90)" />
+            </svg>
+
+          </div>
+
+          <div class="gameover">
+            <svg class="svg-winner svg-winner-nought" viewBox="0 0 48 48" overflow="visible">
+              <use class="gameover-shape gameover-shape-nought" href="#shape-nought" />
+            </svg>
+            <svg class="svg-winner svg-winner-cross" viewBox="0 0 48 48" overflow="visible">
+              <use class="gameover-shape gameover-shape-cross" href="#shape-cross" />
+            </svg>
+            <svg class="svg-text svg-text-draw" viewBox="0 0 204 51" overflow="visible">
+              <text dominant-baseline="middle" text-anchor="middle" x="102" y="25.5" font-size="34">Draw!</text>
+            </svg>
+            <svg class="svg-text svg-text-win" viewBox="0 0 204 51" overflow="visible">
+              <text dominant-baseline="middle" text-anchor="middle" x="102" y="25.5" font-size="34">Winner!</text>
+            </svg>
+          </div>
+
+          <label class="restart-label" for="restart"></label>
+
+        </div>
+
+        <!-- reset button -->
+        <button type="reset" id="restart">Restart</button>
+
+      </form>
+
+    </main>
+
+    <footer>
+      <p>Made by <a href="https://github.com/avisek" target="_blank">Avisek</a>.</p>
+    </footer>
+
+  </body>
+
+</html>

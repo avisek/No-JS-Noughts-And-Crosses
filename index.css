@@ -1,0 +1,1504 @@
+:root {
+  --guide-color:      hsl(214, 90%, 52%);
+  --nought-color:     #fff;
+  --cross-color:      #45494f;
+  --nought-hover-bg:  hsla(0, 0%, 100%, 0.1);
+  --nought-active-bg: hsla(0, 0%, 100%, 0.17);
+  --cross-hover-bg:   hsla(0, 0%, 0%, 0.04);
+  --cross-active-bg:  hsla(0, 0%, 0%, 0.06);
+
+  --stroke-width: 6;
+
+  --guide-length:                       102;
+  --nought-length:                      113.13813018798828;
+  --cross-length:                       50.91168975830078;
+  --strikethrough-length:               204;
+  --strikethrough-half-length:          102;
+  --strikethrough-diagonal-length:      288.49957275390625;
+  --strikethrough-diagonal-half-length: 144.24978637695312;
+
+  --guide-strokeoffset-delay:    0s;
+  --guide-strokeoffset-duration: 0.4s;
+  --guide-strokeoffset-easing:   var(--turn-strokeoffset-easing);
+
+  --turn-strokeoffset-delay:    0s;
+  --turn-strokeoffset-duration: 0.25s;
+  --turn-strokeoffset-easing:   cubic-bezier(0.4, 0, 0.2, 1);
+
+  --strikethrough-strokeoffset-delay:    calc(var(--turn-strokeoffset-delay) + var(--turn-strokeoffset-duration));
+  --strikethrough-strokeoffset-duration: var(--turn-strokeoffset-duration);
+  --strikethrough-strokeoffset-easing:   var(--turn-strokeoffset-easing);
+
+  --turn-transform-delay:    calc(var(--strikethrough-strokeoffset-delay) + var(--strikethrough-strokeoffset-duration));
+  --turn-transform-duration: 0.4s;
+  --turn-transform-easing:   cubic-bezier(0.47, 0, 0.75, 0.72);
+  --strikethrough-transform-delay:    calc(var(--strikethrough-strokeoffset-delay) + var(--strikethrough-strokeoffset-duration));
+  --strikethrough-transform-duration: 0.4s;
+  --strikethrough-transform-easing:   cubic-bezier(0.47, 0, 0.75, 0.72);
+
+  --winner-transform-delay:      calc(var(--turn-transform-delay) + var(--turn-transform-duration));
+  --winner-transform-draw-delay: calc(var(--turn-strokeoffset-delay) + var(--turn-strokeoffset-duration));
+  --winner-transform-duration:   0.5s;
+  --winner-transform-easing:     cubic-bezier(0.39, 0.58, 0.57, 1);
+  --winner-opacity-delay:      calc(var(--turn-transform-delay) + var(--turn-transform-duration));
+  --winner-opacity-draw-delay: calc(var(--turn-strokeoffset-delay) + var(--turn-strokeoffset-duration));
+  --winner-opacity-duration:   0.5s;
+  --winner-opacity-easing:     cubic-bezier(0.39, 0.58, 0.57, 1);
+  --text-transform-delay:      calc(var(--turn-transform-delay) + var(--turn-transform-duration));
+  --text-transform-draw-delay: calc(var(--turn-strokeoffset-delay) + var(--turn-strokeoffset-duration));
+  --text-transform-duration:   0.5s;
+  --text-transform-easing:     cubic-bezier(0.39, 0.58, 0.57, 1);
+  --text-opacity-delay:      calc(var(--turn-transform-delay) + var(--turn-transform-duration));
+  --text-opacity-draw-delay: calc(var(--turn-strokeoffset-delay) + var(--turn-strokeoffset-duration));
+  --text-opacity-duration:   0.5s;
+  --text-opacity-easing:     cubic-bezier(0.45, -1.6, 0.4, 1);
+  --riser-transform-delay:      calc(var(--turn-transform-delay) + var(--turn-transform-duration));
+  --riser-transform-draw-delay: calc(var(--turn-strokeoffset-delay) + var(--turn-strokeoffset-duration));
+  --riser-transform-duration:   1s;
+  --riser-transform-easing:     cubic-bezier(0.3, 0, 0.2, 1);
+  --board-transform-delay:      calc(var(--turn-transform-delay) + var(--turn-transform-duration));
+  --board-transform-draw-delay: calc(var(--turn-strokeoffset-delay) + var(--turn-strokeoffset-duration));
+  --board-transform-duration:   0.5s;
+  --board-transform-easing:     cubic-bezier(0.39, 0.58, 0.57, 1);
+  --board-opacity-delay:      calc(var(--turn-transform-delay) + var(--turn-transform-duration));
+  --board-opacity-draw-delay: calc(var(--turn-strokeoffset-delay) + var(--turn-strokeoffset-duration));
+  --board-opacity-duration:   0.5s;
+  --board-opacity-easing:     cubic-bezier(0.39, 0.58, 0.57, 1);
+
+  --winner-transform-destroy-delay:    var(--winner-opacity-destroy-duration);
+  --winner-transform-destroy-duration: 0s;
+  --winner-transform-destroy-easing:   step-start;
+  --winner-opacity-destroy-delay:    0s;
+  --winner-opacity-destroy-duration: 0.35s;
+  --winner-opacity-destroy-easing:   var(--winner-opacity-easing);
+  --text-transform-destroy-delay:    var(--winner-opacity-destroy-duration);
+  --text-transform-destroy-duration: 0s;
+  --text-transform-destroy-easing:   step-start;
+  --text-opacity-destroy-delay:    0s;
+  --text-opacity-destroy-duration: 0.35s;
+  --text-opacity-destroy-easing:   cubic-bezier(0.39, 0.58, 0.57, 1);
+  --riser-transform-destroy-delay:    var(--winner-opacity-destroy-duration);
+  --riser-transform-destroy-duration: 0s;
+  --riser-transform-destroy-easing:   step-start;
+  --board-transform-destroy-delay:    0s;
+  --board-transform-destroy-duration: var(--board-transform-duration);
+  --board-transform-destroy-easing:   var(--board-transform-easing);
+  --board-opacity-destroy-delay:    0s;
+  --board-opacity-destroy-duration: var(--board-opacity-duration);
+  --board-opacity-destroy-easing:   var(--board-opacity-easing);
+
+  --turn-transform-destroy-delay:    0s;
+  --turn-transform-destroy-duration: var(--turn-transform-duration);
+  --turn-transform-destroy-easing:   var(--turn-transform-easing);
+  --strikethrough-transform-destroy-delay:    0s;
+  --strikethrough-transform-destroy-duration: var(--strikethrough-transform-duration);
+  --strikethrough-transform-destroy-easing:   var(--strikethrough-transform-easing);
+
+  --strikethrough-strokeoffset-destroy-delay:    calc((var(--turn-transform-destroy-delay) + var(--turn-transform-destroy-duration)) / 4);
+  --strikethrough-strokeoffset-destroy-duration: var(--strikethrough-strokeoffset-duration);
+  --strikethrough-strokeoffset-destroy-easing:   var(--strikethrough-strokeoffset-easing);
+
+  --turn-strokeoffset-destroy-delay:    calc((var(--strikethrough-strokeoffset-destroy-delay) + var(--strikethrough-strokeoffset-destroy-duration)) / 4);
+  --turn-strokeoffset-destroy-duration: var(--turn-strokeoffset-duration);
+  --turn-strokeoffset-destroy-easing:   var(--turn-strokeoffset-easing);
+}
+
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-weight: bold;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--cross-color);
+  display: grid;
+  grid-template-rows: 1fr auto;
+  place-items: center;
+  margin: 0;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+main {
+  padding: 1rem;
+}
+
+footer {
+  padding: 0 1rem;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+form {
+  position: relative;
+  padding: 1rem;
+  background-color: hsla(214, 90%, 52%, 0.5);
+  border-radius: 0.5rem;
+}
+
+h1 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  font-size: 2rem;
+  line-height: 1.25;
+  text-align: center;
+}
+
+button {
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 0.9rem;
+  line-height: 1.5rem;
+  text-transform: uppercase;
+  color: #fff;
+  background-color: hsl(214, 90%, 52%);
+  padding: 0.5rem 1rem;
+  border: none;
+  outline: none;
+  border-radius: inherit;
+  overflow: hidden;
+  position: relative;
+  display: block;
+  width: 100%;
+}
+button::before, button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #fff;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.2s;
+  /* will-change: opacity; */
+  pointer-events: none;
+}
+button::after {
+  filter: blur(8px);
+  /* transition: opacity 1.4s, transform 0.1s; */
+  transition: opacity 1.4s, transform 0.15s;
+  opacity: 0.0001;
+  will-change: transform, opacity;
+}
+button:hover::before {
+  /* opacity: 0.05; */
+  /* opacity: 0.1; */
+  opacity: 0.075;
+}
+button:active::before {
+  opacity: 0.1;
+  transition-duration: 0s;
+  background-color: hsla(214, 53%, 23%, 0.16);
+}
+button:active::after {
+  /* opacity: 0.1; */
+  /* opacity: 0.2; */
+  opacity: 0.15;
+  transition-duration: 0s, 0s;
+  transform: scale(0);
+}
+
+footer {
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+  color: hsl(214, 90%, 52%);
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.stage {
+  position: relative;
+  width: 204px;
+  margin: 0 auto 1rem;
+}
+
+.stage {
+  --_turn-strokeoffset-delay:    var(--turn-strokeoffset-destroy-delay);
+  --_turn-strokeoffset-duration: var(--turn-strokeoffset-destroy-duration);
+  --_turn-strokeoffset-easing:   var(--turn-strokeoffset-destroy-easing);
+
+  --_strikethrough-strokeoffset-delay:     var(--strikethrough-strokeoffset-destroy-delay);
+  --_strikethrough-strokeoffset-delay2:    var(--_strikethrough-strokeoffset-delay);
+  --_strikethrough-strokeoffset-duration:  var(--strikethrough-strokeoffset-destroy-duration);
+  --_strikethrough-strokeoffset-duration2: var(--_strikethrough-strokeoffset-duration);
+  --_strikethrough-strokeoffset-easing:    var(--strikethrough-strokeoffset-destroy-easing);
+
+  --_turn-transform-delay:     var(--turn-transform-destroy-delay);
+  --_turn-transform-delay2:    var(--_turn-transform-delay);
+  --_turn-transform-duration:  var(--turn-transform-destroy-duration);
+  --_turn-transform-duration2: var(--_turn-transform-duration);
+  --_turn-transform-easing:    var(--turn-transform-destroy-easing);
+  --_strikethrough-transform-delay:     var(--strikethrough-transform-destroy-delay);
+  --_strikethrough-transform-delay2:    var(--_strikethrough-transform-delay);
+  --_strikethrough-transform-duration:  var(--strikethrough-transform-destroy-duration);
+  --_strikethrough-transform-duration2: var(--_strikethrough-transform-duration);
+  --_strikethrough-transform-easing:    var(--strikethrough-transform-destroy-easing);
+
+  --_winner-transform-delay:     var(--winner-transform-destroy-delay);
+  --_winner-transform-delay2:    var(--_winner-transform-delay);
+  --_winner-transform-duration:  var(--winner-transform-destroy-duration);
+  --_winner-transform-duration2: var(--_winner-transform-duration);
+  --_winner-transform-easing:    var(--winner-transform-destroy-easing);
+  --_winner-opacity-delay:     var(--winner-opacity-destroy-delay);
+  --_winner-opacity-delay2:    var(--_winner-opacity-delay);
+  --_winner-opacity-duration:  var(--winner-opacity-destroy-duration);
+  --_winner-opacity-duration2: var(--_winner-opacity-duration);
+  --_winner-opacity-easing:    var(--winner-opacity-destroy-easing);
+  --_text-transform-delay:     var(--text-transform-destroy-delay);
+  --_text-transform-delay2:    var(--_text-transform-delay);
+  --_text-transform-duration:  var(--text-transform-destroy-duration);
+  --_text-transform-duration2: var(--_text-transform-duration);
+  --_text-transform-easing:    var(--text-transform-destroy-easing);
+  --_text-opacity-delay:     var(--text-opacity-destroy-delay);
+  --_text-opacity-delay2:    var(--_text-opacity-delay);
+  --_text-opacity-duration:  var(--text-opacity-destroy-duration);
+  --_text-opacity-duration2: var(--_text-opacity-duration);
+  --_text-opacity-easing:    var(--text-opacity-destroy-easing);
+  --_riser-transform-delay:     var(--riser-transform-destroy-delay);
+  --_riser-transform-delay2:    var(--_riser-transform-delay);
+  --_riser-transform-duration:  var(--riser-transform-destroy-duration);
+  --_riser-transform-duration2: var(--_riser-transform-duration);
+  --_riser-transform-easing:    var(--riser-transform-destroy-easing);
+  --_board-transform-delay:     var(--board-transform-destroy-delay);
+  --_board-transform-delay2:    var(--_board-transform-delay);
+  --_board-transform-duration:  var(--board-transform-destroy-duration);
+  --_board-transform-duration2: var(--_board-transform-duration);
+  --_board-transform-easing:    var(--board-transform-destroy-easing);
+  --_board-opacity-delay:     var(--board-opacity-destroy-delay);
+  --_board-opacity-delay2:    var(--_board-opacity-delay);
+  --_board-opacity-duration:  var(--board-opacity-destroy-duration);
+  --_board-opacity-duration2: var(--_board-opacity-duration);
+  --_board-opacity-easing:    var(--board-opacity-destroy-easing);
+}
+
+:checked ~ .stage {
+  --_turn-strokeoffset-delay:    var(--turn-strokeoffset-delay);
+  --_turn-strokeoffset-duration: var(--turn-strokeoffset-duration);
+  --_turn-strokeoffset-easing:   var(--turn-strokeoffset-easing);
+}
+
+.nought:checked ~ .nought:checked ~ .nought:checked ~ .nought:checked ~ .nought:checked ~
+.cross:checked ~ .cross:checked ~ .cross:checked ~ .cross:checked ~ .stage {
+  --_winner-transform-delay:     var(--winner-transform-draw-delay);
+  --_winner-transform-delay2:    0s;
+  --_winner-transform-duration:  var(--winner-transform-duration);
+  --_winner-transform-duration2: 0s;
+  --_winner-transform-easing:    var(--winner-transform-easing);
+  --_winner-opacity-delay:     var(--winner-opacity-draw-delay);
+  --_winner-opacity-delay2:    0s;
+  --_winner-opacity-duration:  var(--winner-opacity-duration);
+  --_winner-opacity-duration2: 0s;
+  --_winner-opacity-easing:    var(--winner-opacity-easing);
+  --_text-transform-delay:     var(--text-transform-draw-delay);
+  --_text-transform-delay2:    0s;
+  --_text-transform-duration:  var(--text-transform-duration);
+  --_text-transform-duration2: 0s;
+  --_text-transform-easing:    var(--text-transform-easing);
+  --_text-opacity-delay:     var(--text-opacity-draw-delay);
+  --_text-opacity-delay2:    0s;
+  --_text-opacity-duration:  var(--text-opacity-duration);
+  --_text-opacity-duration2: 0s;
+  --_text-opacity-easing:    var(--text-opacity-easing);
+  --_riser-transform-delay:     var(--riser-transform-draw-delay);
+  --_riser-transform-delay2:    0s;
+  --_riser-transform-duration:  var(--riser-transform-duration);
+  --_riser-transform-duration2: 0s;
+  --_riser-transform-easing:    var(--riser-transform-easing);
+  --_board-transform-delay:     var(--board-transform-draw-delay);
+  --_board-transform-delay2:    0s;
+  --_board-transform-duration:  var(--board-transform-duration);
+  --_board-transform-duration2: 0s;
+  --_board-transform-easing:    var(--board-transform-easing);
+  --_board-opacity-delay:     var(--board-opacity-draw-delay);
+  --_board-opacity-delay2:    0s;
+  --_board-opacity-duration:  var(--board-opacity-duration);
+  --_board-opacity-duration2: 0s;
+  --_board-opacity-easing:    var(--board-opacity-easing);
+}
+
+#sq1-o:checked ~ #sq2-o:checked ~ #sq3-o:checked ~ .stage,
+#sq1-x:checked ~ #sq2-x:checked ~ #sq3-x:checked ~ .stage,
+#sq4-o:checked ~ #sq5-o:checked ~ #sq6-o:checked ~ .stage,
+#sq4-x:checked ~ #sq5-x:checked ~ #sq6-x:checked ~ .stage,
+#sq7-o:checked ~ #sq8-o:checked ~ #sq9-o:checked ~ .stage,
+#sq7-x:checked ~ #sq8-x:checked ~ #sq9-x:checked ~ .stage,
+#sq1-o:checked ~ #sq4-o:checked ~ #sq7-o:checked ~ .stage,
+#sq1-x:checked ~ #sq4-x:checked ~ #sq7-x:checked ~ .stage,
+#sq2-o:checked ~ #sq5-o:checked ~ #sq8-o:checked ~ .stage,
+#sq2-x:checked ~ #sq5-x:checked ~ #sq8-x:checked ~ .stage,
+#sq3-o:checked ~ #sq6-o:checked ~ #sq9-o:checked ~ .stage,
+#sq3-x:checked ~ #sq6-x:checked ~ #sq9-x:checked ~ .stage,
+#sq1-o:checked ~ #sq5-o:checked ~ #sq9-o:checked ~ .stage,
+#sq1-x:checked ~ #sq5-x:checked ~ #sq9-x:checked ~ .stage,
+#sq3-o:checked ~ #sq5-o:checked ~ #sq7-o:checked ~ .stage,
+#sq3-x:checked ~ #sq5-x:checked ~ #sq7-x:checked ~ .stage {
+  --_strikethrough-strokeoffset-delay:     var(--strikethrough-strokeoffset-delay);
+  --_strikethrough-strokeoffset-delay2:    0s;
+  --_strikethrough-strokeoffset-duration:  var(--strikethrough-strokeoffset-duration);
+  --_strikethrough-strokeoffset-duration2: 0s;
+  --_strikethrough-strokeoffset-easing:    var(--strikethrough-strokeoffset-easing);
+
+  --_turn-transform-delay:     var(--turn-transform-delay);
+  --_turn-transform-delay2:    0s;
+  --_turn-transform-duration:  var(--turn-transform-duration);
+  --_turn-transform-duration2: 0s;
+  --_turn-transform-easing:    var(--turn-transform-easing);
+  --_strikethrough-transform-delay:     var(--strikethrough-transform-delay);
+  --_strikethrough-transform-delay2:    0s;
+  --_strikethrough-transform-duration:  var(--strikethrough-transform-duration);
+  --_strikethrough-transform-duration2: 0s;
+  --_strikethrough-transform-easing:    var(--strikethrough-transform-easing);
+
+  --_winner-transform-delay:     var(--winner-transform-delay);
+  --_winner-transform-delay2:    0s;
+  --_winner-transform-duration:  var(--winner-transform-duration);
+  --_winner-transform-duration2: 0s;
+  --_winner-transform-easing:    var(--winner-transform-easing);
+  --_winner-opacity-delay:     var(--winner-opacity-delay);
+  --_winner-opacity-delay2:    0s;
+  --_winner-opacity-duration:  var(--winner-opacity-duration);
+  --_winner-opacity-duration2: 0s;
+  --_winner-opacity-easing:    var(--winner-opacity-easing);
+  --_text-transform-delay:     var(--text-transform-delay);
+  --_text-transform-delay2:    0s;
+  --_text-transform-duration:  var(--text-transform-duration);
+  --_text-transform-duration2: 0s;
+  --_text-transform-easing:    var(--text-transform-easing);
+  --_text-opacity-delay:     var(--text-opacity-delay);
+  --_text-opacity-delay2:    0s;
+  --_text-opacity-duration:  var(--text-opacity-duration);
+  --_text-opacity-duration2: 0s;
+  --_text-opacity-easing:    var(--text-opacity-easing);
+  --_riser-transform-delay:     var(--riser-transform-delay);
+  --_riser-transform-delay2:    0s;
+  --_riser-transform-duration:  var(--riser-transform-duration);
+  --_riser-transform-duration2: 0s;
+  --_riser-transform-easing:    var(--riser-transform-easing);
+  --_board-transform-delay:     var(--board-transform-delay);
+  --_board-transform-delay2:    0s;
+  --_board-transform-duration:  var(--board-transform-duration);
+  --_board-transform-duration2: 0s;
+  --_board-transform-easing:    var(--board-transform-easing);
+  --_board-opacity-delay:     var(--board-opacity-delay);
+  --_board-opacity-delay2:    0s;
+  --_board-opacity-duration:  var(--board-opacity-duration);
+  --_board-opacity-duration2: 0s;
+  --_board-opacity-easing:    var(--board-opacity-easing);
+}
+
+.board {
+  position: relative;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: calc(var(--stroke-width) / 204 * 100%);
+  z-index: 0;
+  transition:
+    transform var(--_board-transform-duration) var(--_board-transform-easing) var(--_board-transform-delay),
+    opacity var(--_board-opacity-duration) var(--_board-opacity-easing) var(--_board-opacity-delay);
+}
+
+.board::after {
+  content: "";
+  grid-column: 1 / -1;
+  display: block;
+  padding-top: calc(var(--stroke-width) / 204 * 200%);
+}
+
+.svg-board, .svg-strikethroughning {
+  position: absolute;
+  display: block;
+  pointer-events: none;
+}
+
+.svg-strikethroughning {
+  z-index: 3;
+}
+
+.square {
+  position: relative;
+  z-index: 1;
+  transition: z-index var(--_turn-transform-duration2) step-end var(--_turn-transform-delay2);
+}
+
+.svg-square {
+  display: block;
+  --col-shift: 0;
+  --row-shift: 0;
+  transform: translate(calc(
+    (100% + var(--stroke-width) / 204 *   300% * (204 / (204 - 2 * var(--stroke-width)))   ) * var(--col-shift)
+  ), calc(
+    (100% + var(--stroke-width) / 204 *   300% * (204 / (204 - 2 * var(--stroke-width)))   ) * var(--row-shift)
+  ));
+  transition: transform var(--_turn-transform-duration) var(--_turn-transform-easing) var(--_turn-transform-delay);
+}
+
+.label {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+}
+
+.label-nought:hover {
+  background-color: var(--nought-hover-bg);
+}
+
+.label-nought:active {
+  background-color: var(--nought-active-bg);
+}
+
+.label-cross:hover {
+  background-color: var(--cross-hover-bg);
+}
+
+.label-cross:active {
+  background-color: var(--cross-active-bg);
+}
+
+.shape {
+  fill: none;
+  stroke-width: var(--stroke-width);
+}
+
+.shape-guide {
+  stroke: var(--guide-color);
+  stroke-dasharray: var(--guide-length);
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset var(--guide-strokeoffset-duration) var(--guide-strokeoffset-easing) var(--guide-strokeoffset-delay);
+}
+
+.shape-guide-y1 {
+  transform: translateY(calc(100% * (204 + var(--stroke-width)) / 204 * 1 / 3 - 100% * var(--stroke-width) / 204 * 1 / 2));
+}
+.shape-guide-y2 {
+  transform: translateY(calc(100% * (204 + var(--stroke-width)) / 204 * 2 / 3 - 100% * var(--stroke-width) / 204 * 1 / 2));
+}
+.shape-guide-x1 {
+  transform: translateX(calc(100% * (204 + var(--stroke-width)) / 204 * 1 / 3 - 100% * var(--stroke-width) / 204 * 1 / 2));
+}
+.shape-guide-x2 {
+  transform: translateX(calc(100% * (204 + var(--stroke-width)) / 204 * 2 / 3 - 100% * var(--stroke-width) / 204 * 1 / 2));
+}
+
+.shape-nought, .shape-cross {
+  stroke-width: calc(300% * (204 / (204 - 2 * var(--stroke-width))) * var(--stroke-width) / 204);
+  transition: stroke-dashoffset var(--_turn-strokeoffset-duration) var(--_turn-strokeoffset-easing) var(--_turn-strokeoffset-delay);
+}
+
+.shape-nought {
+  stroke: var(--nought-color);
+  stroke-dasharray: var(--nought-length);
+  stroke-dashoffset: var(--nought-length);
+}
+
+.shape-cross {
+  stroke: var(--cross-color);
+  stroke-dasharray: var(--cross-length);
+  stroke-dashoffset: var(--cross-length);
+}
+
+.shape-strikethrough {
+  --expand: 1;
+  stroke: var(--nought-color);
+  stroke-dasharray: var(--strikethrough-length);
+  stroke-dashoffset: var(--strikethrough-length);
+  transition:
+    stroke-dashoffset var(--_strikethrough-strokeoffset-duration) var(--_strikethrough-strokeoffset-easing) var(--_strikethrough-strokeoffset-delay),
+    transform var(--_strikethrough-transform-duration) var(--_strikethrough-transform-easing) var(--_strikethrough-transform-delay),
+    stroke var(--_strikethrough-strokeoffset-duration2) step-end var(--_strikethrough-strokeoffset-delay2);
+  transform-origin: center center;
+}
+
+.shape-strikethrough-159, .shape-strikethrough-357 {
+  stroke-dasharray: var(--strikethrough-diagonal-length);
+  stroke-dashoffset: var(--strikethrough-diagonal-length);
+}
+
+.shape-strikethrough-123, .shape-strikethrough-456, .shape-strikethrough-789 {
+  transform: translateY(calc(100% * (204 + var(--stroke-width)) / 204 * var(--perpendicular-translation) / 6 - 100% * var(--stroke-width) / 204 * 1 / 2)) scaleX(var(--expand));
+}
+.shape-strikethrough-147, .shape-strikethrough-258, .shape-strikethrough-369 {
+  transform: translateX(calc(100% * (204 + var(--stroke-width)) / 204 * var(--perpendicular-translation) / 6 - 100% * var(--stroke-width) / 204 * 1 / 2)) scaleY(var(--expand));
+}
+
+.shape-strikethrough-123, .shape-strikethrough-147 {
+  --perpendicular-translation: 1;
+}
+.shape-strikethrough-456, .shape-strikethrough-258 {
+  --perpendicular-translation: 3;
+}
+.shape-strikethrough-789, .shape-strikethrough-369 {
+  --perpendicular-translation: 5;
+}
+
+.shape-strikethrough-159 {
+  transform: rotate(45deg) scaleX(var(--expand)) rotate(-45deg);
+}
+.shape-strikethrough-357 {
+  transform: rotate(135deg) scaleX(var(--expand)) rotate(-45deg);
+}
+
+/* display/visibility logic */
+
+input[type=radio] {
+  display: none;
+}
+
+/* restart button */
+
+/* button[type=reset] {
+  opacity: 0;
+}
+:checked ~ button[type=reset] {
+  opacity: 1;
+} */
+
+/* startup animation */
+
+@keyframes startup {
+  from {
+    stroke-dashoffset: var(--guide-length);
+  }
+}
+#sq1-o:not(:checked) ~ #sq2-o:not(:checked) ~ #sq3-o:not(:checked) ~ #sq4-o:not(:checked) ~ #sq5-o:not(:checked) ~
+#sq6-o:not(:checked) ~ #sq7-o:not(:checked) ~ #sq8-o:not(:checked) ~ #sq9-o:not(:checked) ~ #sq1-x:not(:checked) ~
+#sq2-x:not(:checked) ~ #sq3-x:not(:checked) ~ #sq4-x:not(:checked) ~ #sq5-x:not(:checked) ~ #sq6-x:not(:checked) ~
+#sq7-x:not(:checked) ~ #sq8-x:not(:checked) ~ #sq9-x:not(:checked) ~ .stage .shape-guide {
+  animation: startup var(--guide-strokeoffset-duration) var(--guide-strokeoffset-easing) var(--guide-strokeoffset-delay);
+}
+
+/* turns */
+
+/* default, noughts start */
+.label-cross {
+  display: none;
+}
+
+/* after 1st turn */
+.nought:checked ~ .stage .label-nought {
+  display: none;
+}
+.nought:checked ~ .stage .label-cross {
+  display: block;
+}
+
+/* after 2nd turn */
+.nought:checked ~ .cross:checked ~ .stage .label-cross {
+  display: none;
+}
+.nought:checked ~ .cross:checked ~ .stage .label-nought {
+  display: block;
+}
+
+/* after 3rd turn */
+.nought:checked ~ .nought:checked ~ .cross:checked ~ .stage .label-nought {
+  display: none;
+}
+.nought:checked ~ .nought:checked ~ .cross:checked ~ .stage .label-cross {
+  display: block;
+}
+
+/* after 4th turn */
+.nought:checked ~ .nought:checked ~ .cross:checked ~ .cross:checked ~ .stage .label-cross {
+  display: none;
+}
+.nought:checked ~ .nought:checked ~ .cross:checked ~ .cross:checked ~ .stage .label-nought {
+  display: block;
+}
+
+/* after 5th turn */
+.nought:checked ~ .nought:checked ~ .nought:checked ~
+.cross:checked ~ .cross:checked ~ .stage .label-nought {
+  display: none;
+}
+.nought:checked ~ .nought:checked ~ .nought:checked ~
+.cross:checked ~ .cross:checked ~ .stage .label-cross {
+  display: block;
+}
+
+/* after 6th turn */
+.nought:checked ~ .nought:checked ~ .nought:checked ~
+.cross:checked ~ .cross:checked ~ .cross:checked ~ .stage .label-cross {
+  display: none;
+}
+.nought:checked ~ .nought:checked ~ .nought:checked ~
+.cross:checked ~ .cross:checked ~ .cross:checked ~ .stage .label-nought {
+  display: block;
+}
+
+/* after 7th turn */
+.nought:checked ~ .nought:checked ~ .nought:checked ~ .nought:checked ~
+.cross:checked ~ .cross:checked ~ .cross:checked ~ .stage .label-nought {
+  display: none;
+}
+.nought:checked ~ .nought:checked ~ .nought:checked ~ .nought:checked ~
+.cross:checked ~ .cross:checked ~ .cross:checked ~ .stage .label-cross {
+  display: block;
+}
+
+/* after 8th turn */
+.nought:checked ~ .nought:checked ~ .nought:checked ~ .nought:checked ~
+.cross:checked ~ .cross:checked ~ .cross:checked ~ .cross:checked ~ .stage .label-cross {
+  display: none;
+}
+.nought:checked ~ .nought:checked ~ .nought:checked ~ .nought:checked ~
+.cross:checked ~ .cross:checked ~ .cross:checked ~ .cross:checked ~ .stage .label-nought {
+  display: block;
+}
+
+/* disable used turns */
+
+#sq1-o:checked ~ .stage #sq1 .label-nought, #sq1-o:checked ~ .stage #sq1 .label-cross,
+#sq1-x:checked ~ .stage #sq1 .label-nought, #sq1-x:checked ~ .stage #sq1 .label-cross,
+
+#sq2-o:checked ~ .stage #sq2 .label-nought, #sq2-o:checked ~ .stage #sq2 .label-cross,
+#sq2-x:checked ~ .stage #sq2 .label-nought, #sq2-x:checked ~ .stage #sq2 .label-cross,
+
+#sq3-o:checked ~ .stage #sq3 .label-nought, #sq3-o:checked ~ .stage #sq3 .label-cross,
+#sq3-x:checked ~ .stage #sq3 .label-nought, #sq3-x:checked ~ .stage #sq3 .label-cross,
+
+#sq4-o:checked ~ .stage #sq4 .label-nought, #sq4-o:checked ~ .stage #sq4 .label-cross,
+#sq4-x:checked ~ .stage #sq4 .label-nought, #sq4-x:checked ~ .stage #sq4 .label-cross,
+
+#sq5-o:checked ~ .stage #sq5 .label-nought, #sq5-o:checked ~ .stage #sq5 .label-cross,
+#sq5-x:checked ~ .stage #sq5 .label-nought, #sq5-x:checked ~ .stage #sq5 .label-cross,
+
+#sq6-o:checked ~ .stage #sq6 .label-nought, #sq6-o:checked ~ .stage #sq6 .label-cross,
+#sq6-x:checked ~ .stage #sq6 .label-nought, #sq6-x:checked ~ .stage #sq6 .label-cross,
+
+#sq7-o:checked ~ .stage #sq7 .label-nought, #sq7-o:checked ~ .stage #sq7 .label-cross,
+#sq7-x:checked ~ .stage #sq7 .label-nought, #sq7-x:checked ~ .stage #sq7 .label-cross,
+
+#sq8-o:checked ~ .stage #sq8 .label-nought, #sq8-o:checked ~ .stage #sq8 .label-cross,
+#sq8-x:checked ~ .stage #sq8 .label-nought, #sq8-x:checked ~ .stage #sq8 .label-cross,
+
+#sq9-o:checked ~ .stage #sq9 .label-nought, #sq9-o:checked ~ .stage #sq9 .label-cross,
+#sq9-x:checked ~ .stage #sq9 .label-nought, #sq9-x:checked ~ .stage #sq9 .label-cross {
+  display: none;
+}
+
+/* reveal nought or cross */
+
+#sq1-o:checked ~ .stage #sq1 .shape-nought, #sq1-x:checked ~ .stage #sq1 .shape-cross,
+#sq2-o:checked ~ .stage #sq2 .shape-nought, #sq2-x:checked ~ .stage #sq2 .shape-cross,
+#sq3-o:checked ~ .stage #sq3 .shape-nought, #sq3-x:checked ~ .stage #sq3 .shape-cross,
+#sq4-o:checked ~ .stage #sq4 .shape-nought, #sq4-x:checked ~ .stage #sq4 .shape-cross,
+#sq5-o:checked ~ .stage #sq5 .shape-nought, #sq5-x:checked ~ .stage #sq5 .shape-cross,
+#sq6-o:checked ~ .stage #sq6 .shape-nought, #sq6-x:checked ~ .stage #sq6 .shape-cross,
+#sq7-o:checked ~ .stage #sq7 .shape-nought, #sq7-x:checked ~ .stage #sq7 .shape-cross,
+#sq8-o:checked ~ .stage #sq8 .shape-nought, #sq8-x:checked ~ .stage #sq8 .shape-cross,
+#sq9-o:checked ~ .stage #sq9 .shape-nought, #sq9-x:checked ~ .stage #sq9 .shape-cross {
+  stroke-dashoffset: 0;
+}
+
+/* strikethroughning combinations */
+
+/* hide all labels */
+#sq1-o:checked ~ #sq2-o:checked ~ #sq3-o:checked ~ .stage .label,
+#sq1-x:checked ~ #sq2-x:checked ~ #sq3-x:checked ~ .stage .label,
+
+#sq4-o:checked ~ #sq5-o:checked ~ #sq6-o:checked ~ .stage .label,
+#sq4-x:checked ~ #sq5-x:checked ~ #sq6-x:checked ~ .stage .label,
+
+#sq7-o:checked ~ #sq8-o:checked ~ #sq9-o:checked ~ .stage .label,
+#sq7-x:checked ~ #sq8-x:checked ~ #sq9-x:checked ~ .stage .label,
+
+#sq1-o:checked ~ #sq4-o:checked ~ #sq7-o:checked ~ .stage .label,
+#sq1-x:checked ~ #sq4-x:checked ~ #sq7-x:checked ~ .stage .label,
+
+#sq2-o:checked ~ #sq5-o:checked ~ #sq8-o:checked ~ .stage .label,
+#sq2-x:checked ~ #sq5-x:checked ~ #sq8-x:checked ~ .stage .label,
+
+#sq3-o:checked ~ #sq6-o:checked ~ #sq9-o:checked ~ .stage .label,
+#sq3-x:checked ~ #sq6-x:checked ~ #sq9-x:checked ~ .stage .label,
+
+#sq1-o:checked ~ #sq5-o:checked ~ #sq9-o:checked ~ .stage .label,
+#sq1-x:checked ~ #sq5-x:checked ~ #sq9-x:checked ~ .stage .label,
+
+#sq3-o:checked ~ #sq5-o:checked ~ #sq7-o:checked ~ .stage .label,
+#sq3-x:checked ~ #sq5-x:checked ~ #sq7-x:checked ~ .stage .label {
+  display: none;
+}
+
+/* start delayed strikethrough transitions */
+@keyframes reset-shape-strikethrough {
+  to {
+    stroke-dashoffset: var(--strikethrough-length);
+    transform: none;
+  }
+}
+#sq1-o:checked ~ #sq2-o:checked ~ #sq3-o:checked ~ .stage .shape-strikethrough-123,
+#sq1-x:checked ~ #sq2-x:checked ~ #sq3-x:checked ~ .stage .shape-strikethrough-123,
+#sq4-o:checked ~ #sq5-o:checked ~ #sq6-o:checked ~ .stage .shape-strikethrough-456,
+#sq4-x:checked ~ #sq5-x:checked ~ #sq6-x:checked ~ .stage .shape-strikethrough-456,
+#sq7-o:checked ~ #sq8-o:checked ~ #sq9-o:checked ~ .stage .shape-strikethrough-789,
+#sq7-x:checked ~ #sq8-x:checked ~ #sq9-x:checked ~ .stage .shape-strikethrough-789,
+#sq1-o:checked ~ #sq4-o:checked ~ #sq7-o:checked ~ .stage .shape-strikethrough-147,
+#sq1-x:checked ~ #sq4-x:checked ~ #sq7-x:checked ~ .stage .shape-strikethrough-147,
+#sq2-o:checked ~ #sq5-o:checked ~ #sq8-o:checked ~ .stage .shape-strikethrough-258,
+#sq2-x:checked ~ #sq5-x:checked ~ #sq8-x:checked ~ .stage .shape-strikethrough-258,
+#sq3-o:checked ~ #sq6-o:checked ~ #sq9-o:checked ~ .stage .shape-strikethrough-369,
+#sq3-x:checked ~ #sq6-x:checked ~ #sq9-x:checked ~ .stage .shape-strikethrough-369,
+#sq1-o:checked ~ #sq5-o:checked ~ #sq9-o:checked ~ .stage .shape-strikethrough-159,
+#sq1-x:checked ~ #sq5-x:checked ~ #sq9-x:checked ~ .stage .shape-strikethrough-159,
+#sq3-o:checked ~ #sq5-o:checked ~ #sq7-o:checked ~ .stage .shape-strikethrough-357,
+#sq3-x:checked ~ #sq5-x:checked ~ #sq7-x:checked ~ .stage .shape-strikethrough-357 {
+  stroke-dashoffset: 0;
+  --perpendicular-translation: 3;
+  --expand: 0;
+  /* Chrome Canary Bug Fix: updating `--perpendicular-translation` and `--expand` doesn't update the `transform` where they were used */
+  outline: 1px solid transparent;
+  animation: reset-shape-strikethrough 0s step-start calc(var(--_strikethrough-transform-delay) + var(--_strikethrough-transform-duration)) forwards;
+}
+
+@keyframes reset-shape-strikethrough-diagonal {
+  to {
+    stroke-dashoffset: var(--strikethrough-diagonal-length);
+    transform: none;
+  }
+}
+#sq1-o:checked ~ #sq5-o:checked ~ #sq9-o:checked ~ .stage .shape-strikethrough-159,
+#sq1-x:checked ~ #sq5-x:checked ~ #sq9-x:checked ~ .stage .shape-strikethrough-159,
+#sq3-o:checked ~ #sq5-o:checked ~ #sq7-o:checked ~ .stage .shape-strikethrough-357,
+#sq3-x:checked ~ #sq5-x:checked ~ #sq7-x:checked ~ .stage .shape-strikethrough-357 {
+  animation: reset-shape-strikethrough-diagonal 0s step-start calc(var(--_strikethrough-transform-delay) + var(--_strikethrough-transform-duration)) forwards;
+}
+
+#sq1-x:checked ~ #sq2-x:checked ~ #sq3-x:checked ~ .stage .shape-strikethrough-123,
+#sq4-x:checked ~ #sq5-x:checked ~ #sq6-x:checked ~ .stage .shape-strikethrough-456,
+#sq7-x:checked ~ #sq8-x:checked ~ #sq9-x:checked ~ .stage .shape-strikethrough-789,
+#sq1-x:checked ~ #sq4-x:checked ~ #sq7-x:checked ~ .stage .shape-strikethrough-147,
+#sq2-x:checked ~ #sq5-x:checked ~ #sq8-x:checked ~ .stage .shape-strikethrough-258,
+#sq3-x:checked ~ #sq6-x:checked ~ #sq9-x:checked ~ .stage .shape-strikethrough-369,
+#sq1-x:checked ~ #sq5-x:checked ~ #sq9-x:checked ~ .stage .shape-strikethrough-159,
+#sq3-x:checked ~ #sq5-x:checked ~ #sq7-x:checked ~ .stage .shape-strikethrough-357 {
+  stroke: var(--cross-color);
+}
+
+/* start delayed nought or cross transitions */
+#sq1-o:checked ~ #sq2-o:checked ~ #sq3-o:checked ~ .stage #sq1,
+#sq1-x:checked ~ #sq2-x:checked ~ #sq3-x:checked ~ .stage #sq1,
+#sq1-o:checked ~ #sq4-o:checked ~ #sq7-o:checked ~ .stage #sq1,
+#sq1-x:checked ~ #sq4-x:checked ~ #sq7-x:checked ~ .stage #sq1,
+#sq1-o:checked ~ #sq5-o:checked ~ #sq9-o:checked ~ .stage #sq1,
+#sq1-x:checked ~ #sq5-x:checked ~ #sq9-x:checked ~ .stage #sq1 {
+  z-index: 2;
+}
+#sq1-o:checked ~ #sq2-o:checked ~ #sq3-o:checked ~ .stage #sq2,
+#sq1-x:checked ~ #sq2-x:checked ~ #sq3-x:checked ~ .stage #sq2,
+#sq2-o:checked ~ #sq5-o:checked ~ #sq8-o:checked ~ .stage #sq2,
+#sq2-x:checked ~ #sq5-x:checked ~ #sq8-x:checked ~ .stage #sq2 {
+  z-index: 2;
+}
+#sq1-o:checked ~ #sq2-o:checked ~ #sq3-o:checked ~ .stage #sq3,
+#sq1-x:checked ~ #sq2-x:checked ~ #sq3-x:checked ~ .stage #sq3,
+#sq3-o:checked ~ #sq6-o:checked ~ #sq9-o:checked ~ .stage #sq3,
+#sq3-x:checked ~ #sq6-x:checked ~ #sq9-x:checked ~ .stage #sq3,
+#sq3-o:checked ~ #sq5-o:checked ~ #sq7-o:checked ~ .stage #sq3,
+#sq3-x:checked ~ #sq5-x:checked ~ #sq7-x:checked ~ .stage #sq3 {
+  z-index: 2;
+}
+#sq4-o:checked ~ #sq5-o:checked ~ #sq6-o:checked ~ .stage #sq4,
+#sq4-x:checked ~ #sq5-x:checked ~ #sq6-x:checked ~ .stage #sq4,
+#sq1-o:checked ~ #sq4-o:checked ~ #sq7-o:checked ~ .stage #sq4,
+#sq1-x:checked ~ #sq4-x:checked ~ #sq7-x:checked ~ .stage #sq4 {
+  z-index: 2;
+}
+#sq4-o:checked ~ #sq5-o:checked ~ #sq6-o:checked ~ .stage #sq5,
+#sq4-x:checked ~ #sq5-x:checked ~ #sq6-x:checked ~ .stage #sq5,
+#sq2-o:checked ~ #sq5-o:checked ~ #sq8-o:checked ~ .stage #sq5,
+#sq2-x:checked ~ #sq5-x:checked ~ #sq8-x:checked ~ .stage #sq5,
+#sq1-o:checked ~ #sq5-o:checked ~ #sq9-o:checked ~ .stage #sq5,
+#sq1-x:checked ~ #sq5-x:checked ~ #sq9-x:checked ~ .stage #sq5,
+#sq3-o:checked ~ #sq5-o:checked ~ #sq7-o:checked ~ .stage #sq5,
+#sq3-x:checked ~ #sq5-x:checked ~ #sq7-x:checked ~ .stage #sq5 {
+  z-index: 2;
+}
+#sq4-o:checked ~ #sq5-o:checked ~ #sq6-o:checked ~ .stage #sq6,
+#sq4-x:checked ~ #sq5-x:checked ~ #sq6-x:checked ~ .stage #sq6,
+#sq3-o:checked ~ #sq6-o:checked ~ #sq9-o:checked ~ .stage #sq6,
+#sq3-x:checked ~ #sq6-x:checked ~ #sq9-x:checked ~ .stage #sq6 {
+  z-index: 2;
+}
+#sq7-o:checked ~ #sq8-o:checked ~ #sq9-o:checked ~ .stage #sq7,
+#sq7-x:checked ~ #sq8-x:checked ~ #sq9-x:checked ~ .stage #sq7,
+#sq1-o:checked ~ #sq4-o:checked ~ #sq7-o:checked ~ .stage #sq7,
+#sq1-x:checked ~ #sq4-x:checked ~ #sq7-x:checked ~ .stage #sq7,
+#sq3-o:checked ~ #sq5-o:checked ~ #sq7-o:checked ~ .stage #sq7,
+#sq3-x:checked ~ #sq5-x:checked ~ #sq7-x:checked ~ .stage #sq7 {
+  z-index: 2;
+}
+#sq7-o:checked ~ #sq8-o:checked ~ #sq9-o:checked ~ .stage #sq8,
+#sq7-x:checked ~ #sq8-x:checked ~ #sq9-x:checked ~ .stage #sq8,
+#sq2-o:checked ~ #sq5-o:checked ~ #sq8-o:checked ~ .stage #sq8,
+#sq2-x:checked ~ #sq5-x:checked ~ #sq8-x:checked ~ .stage #sq8 {
+  z-index: 2;
+}
+#sq7-o:checked ~ #sq8-o:checked ~ #sq9-o:checked ~ .stage #sq9,
+#sq7-x:checked ~ #sq8-x:checked ~ #sq9-x:checked ~ .stage #sq9,
+#sq3-o:checked ~ #sq6-o:checked ~ #sq9-o:checked ~ .stage #sq9,
+#sq3-x:checked ~ #sq6-x:checked ~ #sq9-x:checked ~ .stage #sq9,
+#sq1-o:checked ~ #sq5-o:checked ~ #sq9-o:checked ~ .stage #sq9,
+#sq1-x:checked ~ #sq5-x:checked ~ #sq9-x:checked ~ .stage #sq9 {
+  z-index: 2;
+}
+
+@keyframes reset-svg-square {
+  to {
+    transform: none;
+  }
+}
+#sq1-o:checked ~ #sq2-o:checked ~ #sq3-o:checked ~ .stage #sq1 .svg-square,
+#sq1-x:checked ~ #sq2-x:checked ~ #sq3-x:checked ~ .stage #sq1 .svg-square,
+#sq1-o:checked ~ #sq4-o:checked ~ #sq7-o:checked ~ .stage #sq1 .svg-square,
+#sq1-x:checked ~ #sq4-x:checked ~ #sq7-x:checked ~ .stage #sq1 .svg-square,
+#sq1-o:checked ~ #sq5-o:checked ~ #sq9-o:checked ~ .stage #sq1 .svg-square,
+#sq1-x:checked ~ #sq5-x:checked ~ #sq9-x:checked ~ .stage #sq1 .svg-square {
+  --col-shift: 1;
+  --row-shift: 1;
+  animation: reset-svg-square 0s step-start calc(var(--_turn-transform-delay) + var(--_turn-transform-duration)) forwards;
+}
+#sq1-o:checked ~ #sq2-o:checked ~ #sq3-o:checked ~ .stage #sq2 .svg-square,
+#sq1-x:checked ~ #sq2-x:checked ~ #sq3-x:checked ~ .stage #sq2 .svg-square,
+#sq2-o:checked ~ #sq5-o:checked ~ #sq8-o:checked ~ .stage #sq2 .svg-square,
+#sq2-x:checked ~ #sq5-x:checked ~ #sq8-x:checked ~ .stage #sq2 .svg-square {
+  --col-shift: 0;
+  --row-shift: 1;
+  animation: reset-svg-square 0s step-start calc(var(--_turn-transform-delay) + var(--_turn-transform-duration)) forwards;
+}
+#sq1-o:checked ~ #sq2-o:checked ~ #sq3-o:checked ~ .stage #sq3 .svg-square,
+#sq1-x:checked ~ #sq2-x:checked ~ #sq3-x:checked ~ .stage #sq3 .svg-square,
+#sq3-o:checked ~ #sq6-o:checked ~ #sq9-o:checked ~ .stage #sq3 .svg-square,
+#sq3-x:checked ~ #sq6-x:checked ~ #sq9-x:checked ~ .stage #sq3 .svg-square,
+#sq3-o:checked ~ #sq5-o:checked ~ #sq7-o:checked ~ .stage #sq3 .svg-square,
+#sq3-x:checked ~ #sq5-x:checked ~ #sq7-x:checked ~ .stage #sq3 .svg-square {
+  --col-shift: -1;
+  --row-shift: 1;
+  animation: reset-svg-square 0s step-start calc(var(--_turn-transform-delay) + var(--_turn-transform-duration)) forwards;
+}
+#sq4-o:checked ~ #sq5-o:checked ~ #sq6-o:checked ~ .stage #sq4 .svg-square,
+#sq4-x:checked ~ #sq5-x:checked ~ #sq6-x:checked ~ .stage #sq4 .svg-square,
+#sq1-o:checked ~ #sq4-o:checked ~ #sq7-o:checked ~ .stage #sq4 .svg-square,
+#sq1-x:checked ~ #sq4-x:checked ~ #sq7-x:checked ~ .stage #sq4 .svg-square {
+  --col-shift: 1;
+  --row-shift: 0;
+  animation: reset-svg-square 0s step-start calc(var(--_turn-transform-delay) + var(--_turn-transform-duration)) forwards;
+}
+#sq4-o:checked ~ #sq5-o:checked ~ #sq6-o:checked ~ .stage #sq5 .svg-square,
+#sq4-x:checked ~ #sq5-x:checked ~ #sq6-x:checked ~ .stage #sq5 .svg-square,
+#sq2-o:checked ~ #sq5-o:checked ~ #sq8-o:checked ~ .stage #sq5 .svg-square,
+#sq2-x:checked ~ #sq5-x:checked ~ #sq8-x:checked ~ .stage #sq5 .svg-square,
+#sq1-o:checked ~ #sq5-o:checked ~ #sq9-o:checked ~ .stage #sq5 .svg-square,
+#sq1-x:checked ~ #sq5-x:checked ~ #sq9-x:checked ~ .stage #sq5 .svg-square,
+#sq3-o:checked ~ #sq5-o:checked ~ #sq7-o:checked ~ .stage #sq5 .svg-square,
+#sq3-x:checked ~ #sq5-x:checked ~ #sq7-x:checked ~ .stage #sq5 .svg-square {
+  --col-shift: 0;
+  --row-shift: 0;
+  animation: reset-svg-square 0s step-start calc(var(--_turn-transform-delay) + var(--_turn-transform-duration)) forwards;
+}
+#sq4-o:checked ~ #sq5-o:checked ~ #sq6-o:checked ~ .stage #sq6 .svg-square,
+#sq4-x:checked ~ #sq5-x:checked ~ #sq6-x:checked ~ .stage #sq6 .svg-square,
+#sq3-o:checked ~ #sq6-o:checked ~ #sq9-o:checked ~ .stage #sq6 .svg-square,
+#sq3-x:checked ~ #sq6-x:checked ~ #sq9-x:checked ~ .stage #sq6 .svg-square {
+  --col-shift: -1;
+  --row-shift: 0;
+  animation: reset-svg-square 0s step-start calc(var(--_turn-transform-delay) + var(--_turn-transform-duration)) forwards;
+}
+#sq7-o:checked ~ #sq8-o:checked ~ #sq9-o:checked ~ .stage #sq7 .svg-square,
+#sq7-x:checked ~ #sq8-x:checked ~ #sq9-x:checked ~ .stage #sq7 .svg-square,
+#sq1-o:checked ~ #sq4-o:checked ~ #sq7-o:checked ~ .stage #sq7 .svg-square,
+#sq1-x:checked ~ #sq4-x:checked ~ #sq7-x:checked ~ .stage #sq7 .svg-square,
+#sq3-o:checked ~ #sq5-o:checked ~ #sq7-o:checked ~ .stage #sq7 .svg-square,
+#sq3-x:checked ~ #sq5-x:checked ~ #sq7-x:checked ~ .stage #sq7 .svg-square {
+  --col-shift: 1;
+  --row-shift: -1;
+  animation: reset-svg-square 0s step-start calc(var(--_turn-transform-delay) + var(--_turn-transform-duration)) forwards;
+}
+#sq7-o:checked ~ #sq8-o:checked ~ #sq9-o:checked ~ .stage #sq8 .svg-square,
+#sq7-x:checked ~ #sq8-x:checked ~ #sq9-x:checked ~ .stage #sq8 .svg-square,
+#sq2-o:checked ~ #sq5-o:checked ~ #sq8-o:checked ~ .stage #sq8 .svg-square,
+#sq2-x:checked ~ #sq5-x:checked ~ #sq8-x:checked ~ .stage #sq8 .svg-square {
+  --col-shift: 0;
+  --row-shift: -1;
+  animation: reset-svg-square 0s step-start calc(var(--_turn-transform-delay) + var(--_turn-transform-duration)) forwards;
+}
+#sq7-o:checked ~ #sq8-o:checked ~ #sq9-o:checked ~ .stage #sq9 .svg-square,
+#sq7-x:checked ~ #sq8-x:checked ~ #sq9-x:checked ~ .stage #sq9 .svg-square,
+#sq3-o:checked ~ #sq6-o:checked ~ #sq9-o:checked ~ .stage #sq9 .svg-square,
+#sq3-x:checked ~ #sq6-x:checked ~ #sq9-x:checked ~ .stage #sq9 .svg-square,
+#sq1-o:checked ~ #sq5-o:checked ~ #sq9-o:checked ~ .stage #sq9 .svg-square,
+#sq1-x:checked ~ #sq5-x:checked ~ #sq9-x:checked ~ .stage #sq9 .svg-square {
+  --col-shift: -1;
+  --row-shift: -1;
+  animation: reset-svg-square 0s step-start calc(var(--_turn-transform-delay) + var(--_turn-transform-duration)) forwards;
+}
+
+.nought:checked ~ .nought:checked ~ .nought:checked ~ .nought:checked ~ .nought:checked ~
+.cross:checked ~ .cross:checked ~ .cross:checked ~ .cross:checked ~ .stage .shape-nought,
+#sq1-o:checked ~ #sq2-o:checked ~ #sq3-o:checked ~ .stage .shape-nought,
+#sq4-o:checked ~ #sq5-o:checked ~ #sq6-o:checked ~ .stage .shape-nought,
+#sq7-o:checked ~ #sq8-o:checked ~ #sq9-o:checked ~ .stage .shape-nought,
+#sq1-o:checked ~ #sq4-o:checked ~ #sq7-o:checked ~ .stage .shape-nought,
+#sq2-o:checked ~ #sq5-o:checked ~ #sq8-o:checked ~ .stage .shape-nought,
+#sq3-o:checked ~ #sq6-o:checked ~ #sq9-o:checked ~ .stage .shape-nought,
+#sq1-o:checked ~ #sq5-o:checked ~ #sq9-o:checked ~ .stage .shape-nought,
+#sq3-o:checked ~ #sq5-o:checked ~ #sq7-o:checked ~ .stage .shape-nought,
+#sq1-x:checked ~ #sq2-x:checked ~ #sq3-x:checked ~ .stage .shape-nought,
+#sq4-x:checked ~ #sq5-x:checked ~ #sq6-x:checked ~ .stage .shape-nought,
+#sq7-x:checked ~ #sq8-x:checked ~ #sq9-x:checked ~ .stage .shape-nought,
+#sq1-x:checked ~ #sq4-x:checked ~ #sq7-x:checked ~ .stage .shape-nought,
+#sq2-x:checked ~ #sq5-x:checked ~ #sq8-x:checked ~ .stage .shape-nought,
+#sq3-x:checked ~ #sq6-x:checked ~ #sq9-x:checked ~ .stage .shape-nought,
+#sq1-x:checked ~ #sq5-x:checked ~ #sq9-x:checked ~ .stage .shape-nought,
+#sq3-x:checked ~ #sq5-x:checked ~ #sq7-x:checked ~ .stage .shape-nought {
+  animation: reset-shape-nought 0s step-start calc(var(--_board-opacity-delay) + var(--_board-opacity-duration)) forwards;
+}
+.nought:checked ~ .nought:checked ~ .nought:checked ~ .nought:checked ~ .nought:checked ~
+.cross:checked ~ .cross:checked ~ .cross:checked ~ .cross:checked ~ .stage .shape-cross,
+#sq1-o:checked ~ #sq2-o:checked ~ #sq3-o:checked ~ .stage .shape-cross,
+#sq4-o:checked ~ #sq5-o:checked ~ #sq6-o:checked ~ .stage .shape-cross,
+#sq7-o:checked ~ #sq8-o:checked ~ #sq9-o:checked ~ .stage .shape-cross,
+#sq1-o:checked ~ #sq4-o:checked ~ #sq7-o:checked ~ .stage .shape-cross,
+#sq2-o:checked ~ #sq5-o:checked ~ #sq8-o:checked ~ .stage .shape-cross,
+#sq3-o:checked ~ #sq6-o:checked ~ #sq9-o:checked ~ .stage .shape-cross,
+#sq1-o:checked ~ #sq5-o:checked ~ #sq9-o:checked ~ .stage .shape-cross,
+#sq3-o:checked ~ #sq5-o:checked ~ #sq7-o:checked ~ .stage .shape-cross,
+#sq1-x:checked ~ #sq2-x:checked ~ #sq3-x:checked ~ .stage .shape-cross,
+#sq4-x:checked ~ #sq5-x:checked ~ #sq6-x:checked ~ .stage .shape-cross,
+#sq7-x:checked ~ #sq8-x:checked ~ #sq9-x:checked ~ .stage .shape-cross,
+#sq1-x:checked ~ #sq4-x:checked ~ #sq7-x:checked ~ .stage .shape-cross,
+#sq2-x:checked ~ #sq5-x:checked ~ #sq8-x:checked ~ .stage .shape-cross,
+#sq3-x:checked ~ #sq6-x:checked ~ #sq9-x:checked ~ .stage .shape-cross,
+#sq1-x:checked ~ #sq5-x:checked ~ #sq9-x:checked ~ .stage .shape-cross,
+#sq3-x:checked ~ #sq5-x:checked ~ #sq7-x:checked ~ .stage .shape-cross {
+  animation: reset-shape-cross 0s step-start calc(var(--_board-opacity-delay) + var(--_board-opacity-duration)) forwards;
+}
+
+@keyframes reset-shape-nought {
+  to {
+    stroke-dashoffset: var(--nought-length);
+  }
+}
+#sq1-o:checked ~ #sq2-o:checked ~ #sq3-o:checked ~ .stage #sq1 .shape-nought,
+#sq1-x:checked ~ #sq2-x:checked ~ #sq3-x:checked ~ .stage #sq1 .shape-nought,
+#sq1-o:checked ~ #sq4-o:checked ~ #sq7-o:checked ~ .stage #sq1 .shape-nought,
+#sq1-x:checked ~ #sq4-x:checked ~ #sq7-x:checked ~ .stage #sq1 .shape-nought,
+#sq1-o:checked ~ #sq5-o:checked ~ #sq9-o:checked ~ .stage #sq1 .shape-nought,
+#sq1-x:checked ~ #sq5-x:checked ~ #sq9-x:checked ~ .stage #sq1 .shape-nought,
+#sq1-o:checked ~ #sq2-o:checked ~ #sq3-o:checked ~ .stage #sq2 .shape-nought,
+#sq1-x:checked ~ #sq2-x:checked ~ #sq3-x:checked ~ .stage #sq2 .shape-nought,
+#sq2-o:checked ~ #sq5-o:checked ~ #sq8-o:checked ~ .stage #sq2 .shape-nought,
+#sq2-x:checked ~ #sq5-x:checked ~ #sq8-x:checked ~ .stage #sq2 .shape-nought,
+#sq1-o:checked ~ #sq2-o:checked ~ #sq3-o:checked ~ .stage #sq3 .shape-nought,
+#sq1-x:checked ~ #sq2-x:checked ~ #sq3-x:checked ~ .stage #sq3 .shape-nought,
+#sq3-o:checked ~ #sq6-o:checked ~ #sq9-o:checked ~ .stage #sq3 .shape-nought,
+#sq3-x:checked ~ #sq6-x:checked ~ #sq9-x:checked ~ .stage #sq3 .shape-nought,
+#sq3-o:checked ~ #sq5-o:checked ~ #sq7-o:checked ~ .stage #sq3 .shape-nought,
+#sq3-x:checked ~ #sq5-x:checked ~ #sq7-x:checked ~ .stage #sq3 .shape-nought,
+#sq4-o:checked ~ #sq5-o:checked ~ #sq6-o:checked ~ .stage #sq4 .shape-nought,
+#sq4-x:checked ~ #sq5-x:checked ~ #sq6-x:checked ~ .stage #sq4 .shape-nought,
+#sq1-o:checked ~ #sq4-o:checked ~ #sq7-o:checked ~ .stage #sq4 .shape-nought,
+#sq1-x:checked ~ #sq4-x:checked ~ #sq7-x:checked ~ .stage #sq4 .shape-nought,
+#sq4-o:checked ~ #sq5-o:checked ~ #sq6-o:checked ~ .stage #sq5 .shape-nought,
+#sq4-x:checked ~ #sq5-x:checked ~ #sq6-x:checked ~ .stage #sq5 .shape-nought,
+#sq2-o:checked ~ #sq5-o:checked ~ #sq8-o:checked ~ .stage #sq5 .shape-nought,
+#sq2-x:checked ~ #sq5-x:checked ~ #sq8-x:checked ~ .stage #sq5 .shape-nought,
+#sq1-o:checked ~ #sq5-o:checked ~ #sq9-o:checked ~ .stage #sq5 .shape-nought,
+#sq1-x:checked ~ #sq5-x:checked ~ #sq9-x:checked ~ .stage #sq5 .shape-nought,
+#sq3-o:checked ~ #sq5-o:checked ~ #sq7-o:checked ~ .stage #sq5 .shape-nought,
+#sq3-x:checked ~ #sq5-x:checked ~ #sq7-x:checked ~ .stage #sq5 .shape-nought,
+#sq4-o:checked ~ #sq5-o:checked ~ #sq6-o:checked ~ .stage #sq6 .shape-nought,
+#sq4-x:checked ~ #sq5-x:checked ~ #sq6-x:checked ~ .stage #sq6 .shape-nought,
+#sq3-o:checked ~ #sq6-o:checked ~ #sq9-o:checked ~ .stage #sq6 .shape-nought,
+#sq3-x:checked ~ #sq6-x:checked ~ #sq9-x:checked ~ .stage #sq6 .shape-nought,
+#sq7-o:checked ~ #sq8-o:checked ~ #sq9-o:checked ~ .stage #sq7 .shape-nought,
+#sq7-x:checked ~ #sq8-x:checked ~ #sq9-x:checked ~ .stage #sq7 .shape-nought,
+#sq1-o:checked ~ #sq4-o:checked ~ #sq7-o:checked ~ .stage #sq7 .shape-nought,
+#sq1-x:checked ~ #sq4-x:checked ~ #sq7-x:checked ~ .stage #sq7 .shape-nought,
+#sq3-o:checked ~ #sq5-o:checked ~ #sq7-o:checked ~ .stage #sq7 .shape-nought,
+#sq3-x:checked ~ #sq5-x:checked ~ #sq7-x:checked ~ .stage #sq7 .shape-nought,
+#sq7-o:checked ~ #sq8-o:checked ~ #sq9-o:checked ~ .stage #sq8 .shape-nought,
+#sq7-x:checked ~ #sq8-x:checked ~ #sq9-x:checked ~ .stage #sq8 .shape-nought,
+#sq2-o:checked ~ #sq5-o:checked ~ #sq8-o:checked ~ .stage #sq8 .shape-nought,
+#sq2-x:checked ~ #sq5-x:checked ~ #sq8-x:checked ~ .stage #sq8 .shape-nought,
+#sq7-o:checked ~ #sq8-o:checked ~ #sq9-o:checked ~ .stage #sq9 .shape-nought,
+#sq7-x:checked ~ #sq8-x:checked ~ #sq9-x:checked ~ .stage #sq9 .shape-nought,
+#sq3-o:checked ~ #sq6-o:checked ~ #sq9-o:checked ~ .stage #sq9 .shape-nought,
+#sq3-x:checked ~ #sq6-x:checked ~ #sq9-x:checked ~ .stage #sq9 .shape-nought,
+#sq1-o:checked ~ #sq5-o:checked ~ #sq9-o:checked ~ .stage #sq9 .shape-nought,
+#sq1-x:checked ~ #sq5-x:checked ~ #sq9-x:checked ~ .stage #sq9 .shape-nought {
+  animation: reset-shape-nought 0s step-start calc(var(--_turn-transform-delay) + var(--_turn-transform-duration)) forwards;
+}
+
+@keyframes reset-shape-cross {
+  to {
+    stroke-dashoffset: var(--cross-length);
+  }
+}
+#sq1-o:checked ~ #sq2-o:checked ~ #sq3-o:checked ~ .stage #sq1 .shape-cross,
+#sq1-x:checked ~ #sq2-x:checked ~ #sq3-x:checked ~ .stage #sq1 .shape-cross,
+#sq1-o:checked ~ #sq4-o:checked ~ #sq7-o:checked ~ .stage #sq1 .shape-cross,
+#sq1-x:checked ~ #sq4-x:checked ~ #sq7-x:checked ~ .stage #sq1 .shape-cross,
+#sq1-o:checked ~ #sq5-o:checked ~ #sq9-o:checked ~ .stage #sq1 .shape-cross,
+#sq1-x:checked ~ #sq5-x:checked ~ #sq9-x:checked ~ .stage #sq1 .shape-cross,
+#sq1-o:checked ~ #sq2-o:checked ~ #sq3-o:checked ~ .stage #sq2 .shape-cross,
+#sq1-x:checked ~ #sq2-x:checked ~ #sq3-x:checked ~ .stage #sq2 .shape-cross,
+#sq2-o:checked ~ #sq5-o:checked ~ #sq8-o:checked ~ .stage #sq2 .shape-cross,
+#sq2-x:checked ~ #sq5-x:checked ~ #sq8-x:checked ~ .stage #sq2 .shape-cross,
+#sq1-o:checked ~ #sq2-o:checked ~ #sq3-o:checked ~ .stage #sq3 .shape-cross,
+#sq1-x:checked ~ #sq2-x:checked ~ #sq3-x:checked ~ .stage #sq3 .shape-cross,
+#sq3-o:checked ~ #sq6-o:checked ~ #sq9-o:checked ~ .stage #sq3 .shape-cross,
+#sq3-x:checked ~ #sq6-x:checked ~ #sq9-x:checked ~ .stage #sq3 .shape-cross,
+#sq3-o:checked ~ #sq5-o:checked ~ #sq7-o:checked ~ .stage #sq3 .shape-cross,
+#sq3-x:checked ~ #sq5-x:checked ~ #sq7-x:checked ~ .stage #sq3 .shape-cross,
+#sq4-o:checked ~ #sq5-o:checked ~ #sq6-o:checked ~ .stage #sq4 .shape-cross,
+#sq4-x:checked ~ #sq5-x:checked ~ #sq6-x:checked ~ .stage #sq4 .shape-cross,
+#sq1-o:checked ~ #sq4-o:checked ~ #sq7-o:checked ~ .stage #sq4 .shape-cross,
+#sq1-x:checked ~ #sq4-x:checked ~ #sq7-x:checked ~ .stage #sq4 .shape-cross,
+#sq4-o:checked ~ #sq5-o:checked ~ #sq6-o:checked ~ .stage #sq5 .shape-cross,
+#sq4-x:checked ~ #sq5-x:checked ~ #sq6-x:checked ~ .stage #sq5 .shape-cross,
+#sq2-o:checked ~ #sq5-o:checked ~ #sq8-o:checked ~ .stage #sq5 .shape-cross,
+#sq2-x:checked ~ #sq5-x:checked ~ #sq8-x:checked ~ .stage #sq5 .shape-cross,
+#sq1-o:checked ~ #sq5-o:checked ~ #sq9-o:checked ~ .stage #sq5 .shape-cross,
+#sq1-x:checked ~ #sq5-x:checked ~ #sq9-x:checked ~ .stage #sq5 .shape-cross,
+#sq3-o:checked ~ #sq5-o:checked ~ #sq7-o:checked ~ .stage #sq5 .shape-cross,
+#sq3-x:checked ~ #sq5-x:checked ~ #sq7-x:checked ~ .stage #sq5 .shape-cross,
+#sq4-o:checked ~ #sq5-o:checked ~ #sq6-o:checked ~ .stage #sq6 .shape-cross,
+#sq4-x:checked ~ #sq5-x:checked ~ #sq6-x:checked ~ .stage #sq6 .shape-cross,
+#sq3-o:checked ~ #sq6-o:checked ~ #sq9-o:checked ~ .stage #sq6 .shape-cross,
+#sq3-x:checked ~ #sq6-x:checked ~ #sq9-x:checked ~ .stage #sq6 .shape-cross,
+#sq7-o:checked ~ #sq8-o:checked ~ #sq9-o:checked ~ .stage #sq7 .shape-cross,
+#sq7-x:checked ~ #sq8-x:checked ~ #sq9-x:checked ~ .stage #sq7 .shape-cross,
+#sq1-o:checked ~ #sq4-o:checked ~ #sq7-o:checked ~ .stage #sq7 .shape-cross,
+#sq1-x:checked ~ #sq4-x:checked ~ #sq7-x:checked ~ .stage #sq7 .shape-cross,
+#sq3-o:checked ~ #sq5-o:checked ~ #sq7-o:checked ~ .stage #sq7 .shape-cross,
+#sq3-x:checked ~ #sq5-x:checked ~ #sq7-x:checked ~ .stage #sq7 .shape-cross,
+#sq7-o:checked ~ #sq8-o:checked ~ #sq9-o:checked ~ .stage #sq8 .shape-cross,
+#sq7-x:checked ~ #sq8-x:checked ~ #sq9-x:checked ~ .stage #sq8 .shape-cross,
+#sq2-o:checked ~ #sq5-o:checked ~ #sq8-o:checked ~ .stage #sq8 .shape-cross,
+#sq2-x:checked ~ #sq5-x:checked ~ #sq8-x:checked ~ .stage #sq8 .shape-cross,
+#sq7-o:checked ~ #sq8-o:checked ~ #sq9-o:checked ~ .stage #sq9 .shape-cross,
+#sq7-x:checked ~ #sq8-x:checked ~ #sq9-x:checked ~ .stage #sq9 .shape-cross,
+#sq3-o:checked ~ #sq6-o:checked ~ #sq9-o:checked ~ .stage #sq9 .shape-cross,
+#sq3-x:checked ~ #sq6-x:checked ~ #sq9-x:checked ~ .stage #sq9 .shape-cross,
+#sq1-o:checked ~ #sq5-o:checked ~ #sq9-o:checked ~ .stage #sq9 .shape-cross,
+#sq1-x:checked ~ #sq5-x:checked ~ #sq9-x:checked ~ .stage #sq9 .shape-cross {
+  animation: reset-shape-cross 0s step-start calc(var(--_turn-transform-delay) + var(--_turn-transform-duration)) forwards;
+}
+
+@keyframes reset-board {
+  to {
+    transform: none;
+  }
+}
+.nought:checked ~ .nought:checked ~ .nought:checked ~ .nought:checked ~ .nought:checked ~
+.cross:checked ~ .cross:checked ~ .cross:checked ~ .cross:checked ~ .stage .board,
+#sq1-o:checked ~ #sq2-o:checked ~ #sq3-o:checked ~ .stage .board,
+#sq4-o:checked ~ #sq5-o:checked ~ #sq6-o:checked ~ .stage .board,
+#sq7-o:checked ~ #sq8-o:checked ~ #sq9-o:checked ~ .stage .board,
+#sq1-o:checked ~ #sq4-o:checked ~ #sq7-o:checked ~ .stage .board,
+#sq2-o:checked ~ #sq5-o:checked ~ #sq8-o:checked ~ .stage .board,
+#sq3-o:checked ~ #sq6-o:checked ~ #sq9-o:checked ~ .stage .board,
+#sq1-o:checked ~ #sq5-o:checked ~ #sq9-o:checked ~ .stage .board,
+#sq3-o:checked ~ #sq5-o:checked ~ #sq7-o:checked ~ .stage .board,
+#sq1-x:checked ~ #sq2-x:checked ~ #sq3-x:checked ~ .stage .board,
+#sq4-x:checked ~ #sq5-x:checked ~ #sq6-x:checked ~ .stage .board,
+#sq7-x:checked ~ #sq8-x:checked ~ #sq9-x:checked ~ .stage .board,
+#sq1-x:checked ~ #sq4-x:checked ~ #sq7-x:checked ~ .stage .board,
+#sq2-x:checked ~ #sq5-x:checked ~ #sq8-x:checked ~ .stage .board,
+#sq3-x:checked ~ #sq6-x:checked ~ #sq9-x:checked ~ .stage .board,
+#sq1-x:checked ~ #sq5-x:checked ~ #sq9-x:checked ~ .stage .board,
+#sq3-x:checked ~ #sq5-x:checked ~ #sq7-x:checked ~ .stage .board {
+  transform: scale(0.66);
+  opacity: 0;
+  animation: reset-board 0s step-start calc(var(--_board-opacity-delay) + var(--_board-opacity-duration)) forwards;
+}
+
+.gameover {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: grid;
+  grid: auto auto / auto;
+  align-content: center;
+  place-items: center;
+  pointer-events: none;
+  transform: translateY(12.5%);
+  transition: transform var(--_riser-transform-duration) var(--_riser-transform-easing) var(--_riser-transform-delay);
+}
+
+.svg-winner {
+  grid-row-start: 1;
+  grid-column-start: 1;
+  display: block;
+  /* width: calc((100% - (var(--stroke-width) / 204 * 100%) * 2) / 3 * 48 / 64 * 2); */
+  width: calc((100% - (var(--stroke-width) / 204 * 100%) * 2) / 3 * 48 / 64 * 2 * 128 / 96);
+  opacity: 0;
+  transition:
+    transform var(--_winner-transform-duration) var(--_winner-transform-easing) var(--_winner-transform-delay),
+    opacity var(--_winner-opacity-duration) var(--_winner-opacity-easing) var(--_winner-opacity-delay),
+    transform-origin var(--_winner-transform-duration2) step-end var(--_winner-transform-delay2);
+}
+
+.svg-winner-nought {
+  /* transform: translateX(-50%) scale(0.5); */
+  /* transform: translateX(calc(-50% * 96 / 128)) scale(0.5); */
+  transform: translateX(calc(-50% * 96 / 128)) scale(calc(48 / 128));
+}
+
+.svg-winner-cross {
+  /* transform: translateX(50%) scale(0.5); */
+  /* transform: translateX(calc(50% * 96 / 128)) scale(0.5); */
+  transform: translateX(calc(50% * 96 / 128)) scale(calc(48 / 128));
+}
+
+.gameover-shape {
+  fill: none;
+  stroke-width: calc(300% * (204 / (204 - 2 * var(--stroke-width))) * var(--stroke-width) / 204 * 64 / 48);
+}
+
+.gameover-shape-nought {
+  stroke: var(--nought-color);
+}
+
+.gameover-shape-cross {
+  stroke: var(--cross-color);
+}
+
+.svg-text {
+  grid-row-start: 2;
+  grid-column-start: 1;
+  fill: var(--cross-color);
+  font-weight: bold;
+  text-transform: uppercase;
+  transform: translateY(-50%);
+  opacity: 0;
+  transition:
+    transform var(--_text-transform-duration) var(--_text-transform-easing) var(--_text-transform-delay),
+    opacity var(--_text-opacity-duration) var(--_text-opacity-easing) var(--_text-opacity-delay);
+}
+
+.nought:checked ~ .nought:checked ~ .nought:checked ~ .nought:checked ~ .nought:checked ~
+.cross:checked ~ .cross:checked ~ .cross:checked ~ .cross:checked ~ .stage .gameover,
+#sq1-o:checked ~ #sq2-o:checked ~ #sq3-o:checked ~ .stage .gameover,
+#sq4-o:checked ~ #sq5-o:checked ~ #sq6-o:checked ~ .stage .gameover,
+#sq7-o:checked ~ #sq8-o:checked ~ #sq9-o:checked ~ .stage .gameover,
+#sq1-o:checked ~ #sq4-o:checked ~ #sq7-o:checked ~ .stage .gameover,
+#sq2-o:checked ~ #sq5-o:checked ~ #sq8-o:checked ~ .stage .gameover,
+#sq3-o:checked ~ #sq6-o:checked ~ #sq9-o:checked ~ .stage .gameover,
+#sq1-o:checked ~ #sq5-o:checked ~ #sq9-o:checked ~ .stage .gameover,
+#sq3-o:checked ~ #sq5-o:checked ~ #sq7-o:checked ~ .stage .gameover,
+#sq1-x:checked ~ #sq2-x:checked ~ #sq3-x:checked ~ .stage .gameover,
+#sq4-x:checked ~ #sq5-x:checked ~ #sq6-x:checked ~ .stage .gameover,
+#sq7-x:checked ~ #sq8-x:checked ~ #sq9-x:checked ~ .stage .gameover,
+#sq1-x:checked ~ #sq4-x:checked ~ #sq7-x:checked ~ .stage .gameover,
+#sq2-x:checked ~ #sq5-x:checked ~ #sq8-x:checked ~ .stage .gameover,
+#sq3-x:checked ~ #sq6-x:checked ~ #sq9-x:checked ~ .stage .gameover,
+#sq1-x:checked ~ #sq5-x:checked ~ #sq9-x:checked ~ .stage .gameover,
+#sq3-x:checked ~ #sq5-x:checked ~ #sq7-x:checked ~ .stage .gameover {
+  transform: translateY(0%);
+}
+
+.nought:checked ~ .nought:checked ~ .nought:checked ~ .nought:checked ~ .nought:checked ~
+.cross:checked ~ .cross:checked ~ .cross:checked ~ .cross:checked ~ .stage .svg-winner-nought {
+  /* transform: translateX(-50%) scale(1); */
+  transform: translateX(calc(-50% * 96 / 128)) scale(calc(96 / 128));
+  opacity: 1;
+}
+.nought:checked ~ .nought:checked ~ .nought:checked ~ .nought:checked ~ .nought:checked ~
+.cross:checked ~ .cross:checked ~ .cross:checked ~ .cross:checked ~ .stage .svg-winner-cross {
+  /* transform: translateX(50%) scale(1); */
+  transform: translateX(calc(50% * 96 / 128)) scale(calc(96 / 128));
+  opacity: 1;
+}
+
+#sq1-o:checked ~ #sq2-o:checked ~ #sq3-o:checked ~ .stage .svg-winner-nought,
+#sq4-o:checked ~ #sq5-o:checked ~ #sq6-o:checked ~ .stage .svg-winner-nought,
+#sq7-o:checked ~ #sq8-o:checked ~ #sq9-o:checked ~ .stage .svg-winner-nought,
+#sq1-o:checked ~ #sq4-o:checked ~ #sq7-o:checked ~ .stage .svg-winner-nought,
+#sq2-o:checked ~ #sq5-o:checked ~ #sq8-o:checked ~ .stage .svg-winner-nought,
+#sq3-o:checked ~ #sq6-o:checked ~ #sq9-o:checked ~ .stage .svg-winner-nought,
+#sq1-o:checked ~ #sq5-o:checked ~ #sq9-o:checked ~ .stage .svg-winner-nought,
+#sq3-o:checked ~ #sq5-o:checked ~ #sq7-o:checked ~ .stage .svg-winner-nought,
+#sq1-x:checked ~ #sq2-x:checked ~ #sq3-x:checked ~ .stage .svg-winner-cross,
+#sq4-x:checked ~ #sq5-x:checked ~ #sq6-x:checked ~ .stage .svg-winner-cross,
+#sq7-x:checked ~ #sq8-x:checked ~ #sq9-x:checked ~ .stage .svg-winner-cross,
+#sq1-x:checked ~ #sq4-x:checked ~ #sq7-x:checked ~ .stage .svg-winner-cross,
+#sq2-x:checked ~ #sq5-x:checked ~ #sq8-x:checked ~ .stage .svg-winner-cross,
+#sq3-x:checked ~ #sq6-x:checked ~ #sq9-x:checked ~ .stage .svg-winner-cross,
+#sq1-x:checked ~ #sq5-x:checked ~ #sq9-x:checked ~ .stage .svg-winner-cross,
+#sq3-x:checked ~ #sq5-x:checked ~ #sq7-x:checked ~ .stage .svg-winner-cross {
+  transition-duration: var(--_winner-transform-duration), 0s, var(--_winner-transform-duration);
+  /* transform-origin: 150% center; */
+  /* transform-origin: 125% center; */
+  transform-origin: 110% center;
+  transform: translateX(0%) scale(1);
+  opacity: 1;
+}
+#sq1-x:checked ~ #sq2-x:checked ~ #sq3-x:checked ~ .stage .svg-winner-cross,
+#sq4-x:checked ~ #sq5-x:checked ~ #sq6-x:checked ~ .stage .svg-winner-cross,
+#sq7-x:checked ~ #sq8-x:checked ~ #sq9-x:checked ~ .stage .svg-winner-cross,
+#sq1-x:checked ~ #sq4-x:checked ~ #sq7-x:checked ~ .stage .svg-winner-cross,
+#sq2-x:checked ~ #sq5-x:checked ~ #sq8-x:checked ~ .stage .svg-winner-cross,
+#sq3-x:checked ~ #sq6-x:checked ~ #sq9-x:checked ~ .stage .svg-winner-cross,
+#sq1-x:checked ~ #sq5-x:checked ~ #sq9-x:checked ~ .stage .svg-winner-cross,
+#sq3-x:checked ~ #sq5-x:checked ~ #sq7-x:checked ~ .stage .svg-winner-cross {
+  /* transform-origin: -50% center; */
+  /* transform-origin: -25% center; */
+  transform-origin: -10% center;
+}
+
+#sq1-o:checked ~ #sq2-o:checked ~ #sq3-o:checked ~ .stage .svg-winner-cross,
+#sq4-o:checked ~ #sq5-o:checked ~ #sq6-o:checked ~ .stage .svg-winner-cross,
+#sq7-o:checked ~ #sq8-o:checked ~ #sq9-o:checked ~ .stage .svg-winner-cross,
+#sq1-o:checked ~ #sq4-o:checked ~ #sq7-o:checked ~ .stage .svg-winner-cross,
+#sq2-o:checked ~ #sq5-o:checked ~ #sq8-o:checked ~ .stage .svg-winner-cross,
+#sq3-o:checked ~ #sq6-o:checked ~ #sq9-o:checked ~ .stage .svg-winner-cross,
+#sq1-o:checked ~ #sq5-o:checked ~ #sq9-o:checked ~ .stage .svg-winner-cross,
+#sq3-o:checked ~ #sq5-o:checked ~ #sq7-o:checked ~ .stage .svg-winner-cross,
+#sq1-x:checked ~ #sq2-x:checked ~ #sq3-x:checked ~ .stage .svg-winner-nought,
+#sq4-x:checked ~ #sq5-x:checked ~ #sq6-x:checked ~ .stage .svg-winner-nought,
+#sq7-x:checked ~ #sq8-x:checked ~ #sq9-x:checked ~ .stage .svg-winner-nought,
+#sq1-x:checked ~ #sq4-x:checked ~ #sq7-x:checked ~ .stage .svg-winner-nought,
+#sq2-x:checked ~ #sq5-x:checked ~ #sq8-x:checked ~ .stage .svg-winner-nought,
+#sq3-x:checked ~ #sq6-x:checked ~ #sq9-x:checked ~ .stage .svg-winner-nought,
+#sq1-x:checked ~ #sq5-x:checked ~ #sq9-x:checked ~ .stage .svg-winner-nought,
+#sq3-x:checked ~ #sq5-x:checked ~ #sq7-x:checked ~ .stage .svg-winner-nought {
+  opacity: 0;
+}
+
+.nought:checked ~ .nought:checked ~ .nought:checked ~ .nought:checked ~ .nought:checked ~
+.cross:checked ~ .cross:checked ~ .cross:checked ~ .cross:checked ~ .stage .svg-text-draw {
+  opacity: 1;
+  transform: translateY(-25%);
+}
+#sq1-o:checked ~ #sq2-o:checked ~ #sq3-o:checked ~ .stage .svg-text-win,
+#sq4-o:checked ~ #sq5-o:checked ~ #sq6-o:checked ~ .stage .svg-text-win,
+#sq7-o:checked ~ #sq8-o:checked ~ #sq9-o:checked ~ .stage .svg-text-win,
+#sq1-o:checked ~ #sq4-o:checked ~ #sq7-o:checked ~ .stage .svg-text-win,
+#sq2-o:checked ~ #sq5-o:checked ~ #sq8-o:checked ~ .stage .svg-text-win,
+#sq3-o:checked ~ #sq6-o:checked ~ #sq9-o:checked ~ .stage .svg-text-win,
+#sq1-o:checked ~ #sq5-o:checked ~ #sq9-o:checked ~ .stage .svg-text-win,
+#sq3-o:checked ~ #sq5-o:checked ~ #sq7-o:checked ~ .stage .svg-text-win,
+#sq1-x:checked ~ #sq2-x:checked ~ #sq3-x:checked ~ .stage .svg-text-win,
+#sq4-x:checked ~ #sq5-x:checked ~ #sq6-x:checked ~ .stage .svg-text-win,
+#sq7-x:checked ~ #sq8-x:checked ~ #sq9-x:checked ~ .stage .svg-text-win,
+#sq1-x:checked ~ #sq4-x:checked ~ #sq7-x:checked ~ .stage .svg-text-win,
+#sq2-x:checked ~ #sq5-x:checked ~ #sq8-x:checked ~ .stage .svg-text-win,
+#sq3-x:checked ~ #sq6-x:checked ~ #sq9-x:checked ~ .stage .svg-text-win,
+#sq1-x:checked ~ #sq5-x:checked ~ #sq9-x:checked ~ .stage .svg-text-win,
+#sq3-x:checked ~ #sq5-x:checked ~ #sq7-x:checked ~ .stage .svg-text-win {
+  opacity: 1;
+  transform: translateY(0%);
+}
+#sq1-o:checked ~ #sq2-o:checked ~ #sq3-o:checked ~ .stage .svg-text-draw,
+#sq4-o:checked ~ #sq5-o:checked ~ #sq6-o:checked ~ .stage .svg-text-draw,
+#sq7-o:checked ~ #sq8-o:checked ~ #sq9-o:checked ~ .stage .svg-text-draw,
+#sq1-o:checked ~ #sq4-o:checked ~ #sq7-o:checked ~ .stage .svg-text-draw,
+#sq2-o:checked ~ #sq5-o:checked ~ #sq8-o:checked ~ .stage .svg-text-draw,
+#sq3-o:checked ~ #sq6-o:checked ~ #sq9-o:checked ~ .stage .svg-text-draw,
+#sq1-o:checked ~ #sq5-o:checked ~ #sq9-o:checked ~ .stage .svg-text-draw,
+#sq3-o:checked ~ #sq5-o:checked ~ #sq7-o:checked ~ .stage .svg-text-draw,
+#sq1-x:checked ~ #sq2-x:checked ~ #sq3-x:checked ~ .stage .svg-text-draw,
+#sq4-x:checked ~ #sq5-x:checked ~ #sq6-x:checked ~ .stage .svg-text-draw,
+#sq7-x:checked ~ #sq8-x:checked ~ #sq9-x:checked ~ .stage .svg-text-draw,
+#sq1-x:checked ~ #sq4-x:checked ~ #sq7-x:checked ~ .stage .svg-text-draw,
+#sq2-x:checked ~ #sq5-x:checked ~ #sq8-x:checked ~ .stage .svg-text-draw,
+#sq3-x:checked ~ #sq6-x:checked ~ #sq9-x:checked ~ .stage .svg-text-draw,
+#sq1-x:checked ~ #sq5-x:checked ~ #sq9-x:checked ~ .stage .svg-text-draw,
+#sq3-x:checked ~ #sq5-x:checked ~ #sq7-x:checked ~ .stage .svg-text-draw {
+  opacity: 0;
+  transform: translateY(-50%);
+}
+
+.restart-label {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  pointer-events: none;
+}
+
+@keyframes restart-label {
+  to {
+    pointer-events: auto;
+  }
+}
+.nought:checked ~ .nought:checked ~ .nought:checked ~ .nought:checked ~ .nought:checked ~
+.cross:checked ~ .cross:checked ~ .cross:checked ~ .cross:checked ~ .stage .restart-label,
+#sq1-o:checked ~ #sq2-o:checked ~ #sq3-o:checked ~ .stage .restart-label,
+#sq4-o:checked ~ #sq5-o:checked ~ #sq6-o:checked ~ .stage .restart-label,
+#sq7-o:checked ~ #sq8-o:checked ~ #sq9-o:checked ~ .stage .restart-label,
+#sq1-o:checked ~ #sq4-o:checked ~ #sq7-o:checked ~ .stage .restart-label,
+#sq2-o:checked ~ #sq5-o:checked ~ #sq8-o:checked ~ .stage .restart-label,
+#sq3-o:checked ~ #sq6-o:checked ~ #sq9-o:checked ~ .stage .restart-label,
+#sq1-o:checked ~ #sq5-o:checked ~ #sq9-o:checked ~ .stage .restart-label,
+#sq3-o:checked ~ #sq5-o:checked ~ #sq7-o:checked ~ .stage .restart-label,
+#sq1-x:checked ~ #sq2-x:checked ~ #sq3-x:checked ~ .stage .restart-label,
+#sq4-x:checked ~ #sq5-x:checked ~ #sq6-x:checked ~ .stage .restart-label,
+#sq7-x:checked ~ #sq8-x:checked ~ #sq9-x:checked ~ .stage .restart-label,
+#sq1-x:checked ~ #sq4-x:checked ~ #sq7-x:checked ~ .stage .restart-label,
+#sq2-x:checked ~ #sq5-x:checked ~ #sq8-x:checked ~ .stage .restart-label,
+#sq3-x:checked ~ #sq6-x:checked ~ #sq9-x:checked ~ .stage .restart-label,
+#sq1-x:checked ~ #sq5-x:checked ~ #sq9-x:checked ~ .stage .restart-label,
+#sq3-x:checked ~ #sq5-x:checked ~ #sq7-x:checked ~ .stage .restart-label {
+  animation: restart-label 0s step-start var(--_winner-opacity-delay) forwards;
+}
+
+@-moz-document url-prefix() {
+
+  :root {
+    --winner-transform-destroy-delay:    calc(var(--turn-strokeoffset-destroy-delay) + var(--turn-strokeoffset-destroy-duration));
+    --winner-transform-destroy-duration: var(--winner-opacity-destroy-duration);
+    --winner-transform-destroy-easing:   step-end;
+    --winner-opacity-destroy-delay:    calc(var(--turn-strokeoffset-destroy-delay) + var(--turn-strokeoffset-destroy-duration));
+    --winner-opacity-destroy-duration: 0.35s;
+    --winner-opacity-destroy-easing:   var(--winner-opacity-easing);
+    --text-transform-destroy-delay:    calc(var(--turn-strokeoffset-destroy-delay) + var(--turn-strokeoffset-destroy-duration));
+    --text-transform-destroy-duration: var(--winner-opacity-destroy-duration);
+    --text-transform-destroy-easing:   step-end;
+    --text-opacity-destroy-delay:    calc(var(--turn-strokeoffset-destroy-delay) + var(--turn-strokeoffset-destroy-duration));
+    --text-opacity-destroy-duration: 0.35s;
+    --text-opacity-destroy-easing:   cubic-bezier(0.39, 0.58, 0.57, 1);
+    --riser-transform-destroy-delay:    calc(var(--turn-strokeoffset-destroy-delay) + var(--turn-strokeoffset-destroy-duration));
+    --riser-transform-destroy-duration: var(--winner-opacity-destroy-duration);
+    --riser-transform-destroy-easing:   step-end;
+    --board-transform-destroy-delay:    calc(var(--turn-strokeoffset-destroy-delay) + var(--turn-strokeoffset-destroy-duration));
+    --board-transform-destroy-duration: var(--board-transform-duration);
+    --board-transform-destroy-easing:   var(--board-transform-easing);
+    --board-opacity-destroy-delay:    calc(var(--turn-strokeoffset-destroy-delay) + var(--turn-strokeoffset-destroy-duration));
+    --board-opacity-destroy-duration: var(--board-opacity-duration);
+    --board-opacity-destroy-easing:   var(--board-opacity-easing);
+  }
+
+  .svg-square {
+    transition:
+      transform var(--_turn-transform-duration) var(--_turn-transform-easing) var(--_turn-transform-delay),
+      visibility 0s step-start calc(var(--_turn-transform-delay) + var(--_turn-transform-duration));
+  }
+
+  .shape-nought, .shape-cross {
+    transition:
+      stroke-dashoffset var(--_turn-strokeoffset-duration) var(--_turn-strokeoffset-easing) var(--_turn-strokeoffset-delay),
+      visibility 0s step-start calc(var(--_turn-transform-delay) + var(--_turn-transform-duration));
+  }
+
+  .shape-strikethrough {
+    transition:
+      stroke-dashoffset var(--_strikethrough-strokeoffset-duration) var(--_strikethrough-strokeoffset-easing) var(--_strikethrough-strokeoffset-delay),
+      transform var(--_strikethrough-transform-duration) var(--_strikethrough-transform-easing) var(--_strikethrough-transform-delay),
+      stroke var(--_strikethrough-strokeoffset-duration2) step-end var(--_strikethrough-strokeoffset-delay2),
+      visibility 0s step-start calc(var(--_turn-transform-delay) + var(--_turn-transform-duration));
+  }
+
+  .shape-strikethrough, .svg-square, .shape-nought, .shape-cross, .board {
+    animation: none !important;
+  }
+
+  #sq1-o:checked ~ #sq2-o:checked ~ #sq3-o:checked ~ .stage .shape-strikethrough-123,
+  #sq1-x:checked ~ #sq2-x:checked ~ #sq3-x:checked ~ .stage .shape-strikethrough-123,
+  #sq4-o:checked ~ #sq5-o:checked ~ #sq6-o:checked ~ .stage .shape-strikethrough-456,
+  #sq4-x:checked ~ #sq5-x:checked ~ #sq6-x:checked ~ .stage .shape-strikethrough-456,
+  #sq7-o:checked ~ #sq8-o:checked ~ #sq9-o:checked ~ .stage .shape-strikethrough-789,
+  #sq7-x:checked ~ #sq8-x:checked ~ #sq9-x:checked ~ .stage .shape-strikethrough-789,
+  #sq1-o:checked ~ #sq4-o:checked ~ #sq7-o:checked ~ .stage .shape-strikethrough-147,
+  #sq1-x:checked ~ #sq4-x:checked ~ #sq7-x:checked ~ .stage .shape-strikethrough-147,
+  #sq2-o:checked ~ #sq5-o:checked ~ #sq8-o:checked ~ .stage .shape-strikethrough-258,
+  #sq2-x:checked ~ #sq5-x:checked ~ #sq8-x:checked ~ .stage .shape-strikethrough-258,
+  #sq3-o:checked ~ #sq6-o:checked ~ #sq9-o:checked ~ .stage .shape-strikethrough-369,
+  #sq3-x:checked ~ #sq6-x:checked ~ #sq9-x:checked ~ .stage .shape-strikethrough-369,
+  #sq1-o:checked ~ #sq5-o:checked ~ #sq9-o:checked ~ .stage .shape-strikethrough-159,
+  #sq1-x:checked ~ #sq5-x:checked ~ #sq9-x:checked ~ .stage .shape-strikethrough-159,
+  #sq3-o:checked ~ #sq5-o:checked ~ #sq7-o:checked ~ .stage .shape-strikethrough-357,
+  #sq3-x:checked ~ #sq5-x:checked ~ #sq7-x:checked ~ .stage .shape-strikethrough-357,
+
+  #sq1-o:checked ~ #sq2-o:checked ~ #sq3-o:checked ~ .stage #sq1 .svg-square,
+  #sq1-x:checked ~ #sq2-x:checked ~ #sq3-x:checked ~ .stage #sq1 .svg-square,
+  #sq1-o:checked ~ #sq4-o:checked ~ #sq7-o:checked ~ .stage #sq1 .svg-square,
+  #sq1-x:checked ~ #sq4-x:checked ~ #sq7-x:checked ~ .stage #sq1 .svg-square,
+  #sq1-o:checked ~ #sq5-o:checked ~ #sq9-o:checked ~ .stage #sq1 .svg-square,
+  #sq1-x:checked ~ #sq5-x:checked ~ #sq9-x:checked ~ .stage #sq1 .svg-square,
+  #sq1-o:checked ~ #sq2-o:checked ~ #sq3-o:checked ~ .stage #sq2 .svg-square,
+  #sq1-x:checked ~ #sq2-x:checked ~ #sq3-x:checked ~ .stage #sq2 .svg-square,
+  #sq2-o:checked ~ #sq5-o:checked ~ #sq8-o:checked ~ .stage #sq2 .svg-square,
+  #sq2-x:checked ~ #sq5-x:checked ~ #sq8-x:checked ~ .stage #sq2 .svg-square,
+  #sq1-o:checked ~ #sq2-o:checked ~ #sq3-o:checked ~ .stage #sq3 .svg-square,
+  #sq1-x:checked ~ #sq2-x:checked ~ #sq3-x:checked ~ .stage #sq3 .svg-square,
+  #sq3-o:checked ~ #sq6-o:checked ~ #sq9-o:checked ~ .stage #sq3 .svg-square,
+  #sq3-x:checked ~ #sq6-x:checked ~ #sq9-x:checked ~ .stage #sq3 .svg-square,
+  #sq3-o:checked ~ #sq5-o:checked ~ #sq7-o:checked ~ .stage #sq3 .svg-square,
+  #sq3-x:checked ~ #sq5-x:checked ~ #sq7-x:checked ~ .stage #sq3 .svg-square,
+  #sq4-o:checked ~ #sq5-o:checked ~ #sq6-o:checked ~ .stage #sq4 .svg-square,
+  #sq4-x:checked ~ #sq5-x:checked ~ #sq6-x:checked ~ .stage #sq4 .svg-square,
+  #sq1-o:checked ~ #sq4-o:checked ~ #sq7-o:checked ~ .stage #sq4 .svg-square,
+  #sq1-x:checked ~ #sq4-x:checked ~ #sq7-x:checked ~ .stage #sq4 .svg-square,
+  #sq4-o:checked ~ #sq5-o:checked ~ #sq6-o:checked ~ .stage #sq5 .svg-square,
+  #sq4-x:checked ~ #sq5-x:checked ~ #sq6-x:checked ~ .stage #sq5 .svg-square,
+  #sq2-o:checked ~ #sq5-o:checked ~ #sq8-o:checked ~ .stage #sq5 .svg-square,
+  #sq2-x:checked ~ #sq5-x:checked ~ #sq8-x:checked ~ .stage #sq5 .svg-square,
+  #sq1-o:checked ~ #sq5-o:checked ~ #sq9-o:checked ~ .stage #sq5 .svg-square,
+  #sq1-x:checked ~ #sq5-x:checked ~ #sq9-x:checked ~ .stage #sq5 .svg-square,
+  #sq3-o:checked ~ #sq5-o:checked ~ #sq7-o:checked ~ .stage #sq5 .svg-square,
+  #sq3-x:checked ~ #sq5-x:checked ~ #sq7-x:checked ~ .stage #sq5 .svg-square,
+  #sq4-o:checked ~ #sq5-o:checked ~ #sq6-o:checked ~ .stage #sq6 .svg-square,
+  #sq4-x:checked ~ #sq5-x:checked ~ #sq6-x:checked ~ .stage #sq6 .svg-square,
+  #sq3-o:checked ~ #sq6-o:checked ~ #sq9-o:checked ~ .stage #sq6 .svg-square,
+  #sq3-x:checked ~ #sq6-x:checked ~ #sq9-x:checked ~ .stage #sq6 .svg-square,
+  #sq7-o:checked ~ #sq8-o:checked ~ #sq9-o:checked ~ .stage #sq7 .svg-square,
+  #sq7-x:checked ~ #sq8-x:checked ~ #sq9-x:checked ~ .stage #sq7 .svg-square,
+  #sq1-o:checked ~ #sq4-o:checked ~ #sq7-o:checked ~ .stage #sq7 .svg-square,
+  #sq1-x:checked ~ #sq4-x:checked ~ #sq7-x:checked ~ .stage #sq7 .svg-square,
+  #sq3-o:checked ~ #sq5-o:checked ~ #sq7-o:checked ~ .stage #sq7 .svg-square,
+  #sq3-x:checked ~ #sq5-x:checked ~ #sq7-x:checked ~ .stage #sq7 .svg-square,
+  #sq7-o:checked ~ #sq8-o:checked ~ #sq9-o:checked ~ .stage #sq8 .svg-square,
+  #sq7-x:checked ~ #sq8-x:checked ~ #sq9-x:checked ~ .stage #sq8 .svg-square,
+  #sq2-o:checked ~ #sq5-o:checked ~ #sq8-o:checked ~ .stage #sq8 .svg-square,
+  #sq2-x:checked ~ #sq5-x:checked ~ #sq8-x:checked ~ .stage #sq8 .svg-square,
+  #sq7-o:checked ~ #sq8-o:checked ~ #sq9-o:checked ~ .stage #sq9 .svg-square,
+  #sq7-x:checked ~ #sq8-x:checked ~ #sq9-x:checked ~ .stage #sq9 .svg-square,
+  #sq3-o:checked ~ #sq6-o:checked ~ #sq9-o:checked ~ .stage #sq9 .svg-square,
+  #sq3-x:checked ~ #sq6-x:checked ~ #sq9-x:checked ~ .stage #sq9 .svg-square,
+  #sq1-o:checked ~ #sq5-o:checked ~ #sq9-o:checked ~ .stage #sq9 .svg-square,
+  #sq1-x:checked ~ #sq5-x:checked ~ #sq9-x:checked ~ .stage #sq9 .svg-square {
+    visibility: hidden;
+  }
+
+  .restart-label {
+    background-color: transparent;
+  }
+
+  ::-moz-focus-inner {
+    border: none;
+  }
+
+}
