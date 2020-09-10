@@ -222,11 +222,33 @@ footer {
 
 a {
   text-decoration: none;
+  outline: none;
+  position: relative;
   color: hsl(214, 90%, 52%);
+  border-radius: 0.25rem;
+  padding-left: 0.1rem;
+  padding-right: 0.1rem;
+  margin-left: -0.1rem;
+  margin-right: -0.1rem;
+  box-shadow: 0 0 0 0 hsla(214, 90%, 52%, 0.25);
+  transition: background-color 0.2s, box-shadow 0.1s;
+}
+
+a:focus {
+  border-color: hsl(214, 90%, 52%);
+  box-shadow: 0 0 0 0.2rem hsla(214, 90%, 52%, 0.25);
 }
 
 a:hover {
-  text-decoration: underline;
+  background-color: hsla(0, 0%, 0%, 0.085);
+}
+
+a:hover:not(:active) {
+  box-shadow: 0 0 0 0 hsla(214, 90%, 52%, 0.25);
+}
+
+a:active {
+  background-color: hsla(214, 90%, 52%, 0.25);
 }
 
 .stage {
