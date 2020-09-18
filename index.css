@@ -136,6 +136,8 @@ main {
 
 footer {
   padding: 0 1rem;
+  font-size: 0.85rem;
+  text-align: center;
 }
 
 p {
@@ -191,15 +193,22 @@ button::before, button::after {
   pointer-events: none;
 }
 button::after {
-  filter: blur(8px);
-  /* transition: opacity 1.4s, transform 0.1s; */
+  margin: 0.5rem;
+  border-radius: 0;
+  box-shadow:
+    0 0  4px 0 #fff,
+    0 0  8px 0 #fff,
+    0 0 12px 0 #fff,
+    0 0 16px 0 #fff,
+    0 0 20px 0 #fff,
+    0 0 24px 0 #fff,
+    0 0 28px 0 #fff,
+    0 0 32px 0 #fff;
   transition: opacity 1.4s, transform 0.15s;
   opacity: 0.0001;
   will-change: transform, opacity;
 }
 button:hover::before {
-  /* opacity: 0.05; */
-  /* opacity: 0.1; */
   opacity: 0.075;
 }
 button:active::before {
@@ -208,16 +217,9 @@ button:active::before {
   background-color: hsla(214, 53%, 23%, 0.16);
 }
 button:active::after {
-  /* opacity: 0.1; */
-  /* opacity: 0.2; */
-  opacity: 0.15;
+  opacity: 0.125;
   transition-duration: 0s, 0s;
   transform: scale(0);
-}
-
-footer {
-  font-size: 0.85rem;
-  text-align: center;
 }
 
 a {
@@ -233,20 +235,16 @@ a {
   box-shadow: 0 0 0 0 hsla(214, 90%, 52%, 0.25);
   transition: background-color 0.2s, box-shadow 0.1s;
 }
-
 a:focus {
   border-color: hsl(214, 90%, 52%);
   box-shadow: 0 0 0 0.2rem hsla(214, 90%, 52%, 0.25);
 }
-
 a:hover {
   background-color: hsla(0, 0%, 0%, 0.085);
 }
-
 a:hover:not(:active) {
   box-shadow: 0 0 0 0 hsla(214, 90%, 52%, 0.25);
 }
-
 a:active {
   background-color: hsla(214, 90%, 52%, 0.25);
 }
