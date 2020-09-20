@@ -792,8 +792,6 @@ input[type=radio] {
   stroke-dashoffset: 0;
   --perpendicular-translation: 3;
   --expand: 0;
-  /* Chrome Canary Bug Fix: updating `--perpendicular-translation` and `--expand` doesn't update the `transform` where they were used */
-  outline: 1px solid transparent;
   animation: reset-shape-strikethrough 0s step-start calc(var(--_strikethrough-transform-delay) + var(--_strikethrough-transform-duration)) forwards;
 }
 
