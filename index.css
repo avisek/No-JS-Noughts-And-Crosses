@@ -9,13 +9,11 @@
 
   --stroke-width: 6;
 
-  --guide-length:                       102;
-  --nought-length:                      113.13813018798828;
-  --cross-length:                       50.91168975830078;
-  --strikethrough-length:               204;
-  --strikethrough-half-length:          102;
-  --strikethrough-diagonal-length:      288.49957275390625;
-  --strikethrough-diagonal-half-length: 144.24978637695312;
+  --guide-length:                  102;
+  --nought-length:                 113.13813018798828;
+  --cross-length:                  50.91168975830078;
+  --strikethrough-length:          204;
+  --strikethrough-diagonal-length: 288.49957275390625;
 
   --guide-strokeoffset-delay:    0s;
   --guide-strokeoffset-duration: 0.4s;
