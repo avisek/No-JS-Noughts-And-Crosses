@@ -8,6 +8,24 @@
     <meta name="description" content="A game of Noughts and Crosses or Tic Tac Toe using HTML and CSS only, no JavaScript. It's all done with the `checkbox hack` or, in this case, radio buttons' checked property.">
     <meta name="author" content="Avisek Das">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <style>
+      /* startup bug fix */
+      .shape-nought {
+        stroke-dashoffset: 113.13813018798828;
+      }
+      .shape-cross {
+        stroke-dashoffset: 50.91168975830078;
+      }
+      .shape-strikethrough {
+        stroke-dashoffset: 204;
+      }
+      .shape-strikethrough-159, .shape-strikethrough-357 {
+        stroke-dashoffset: 288.49957275390625;
+      }
+      .svg-winner, .svg-text {
+        opacity: 0;
+      }
+    </style>
     <link rel="stylesheet" href="index.css">
 
   </head>
